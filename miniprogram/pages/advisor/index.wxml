@@ -1,0 +1,69 @@
+<view class="intro">
+  <view class="intro-ring"></view>
+  <view class="row-between">
+    <text class="eyebrow">DEGAO · AI ADVISOR</text>
+    <text class="mode">{{online ? t.advisor.online : t.advisor.offline}}</text>
+  </view>
+  <view class="intro-title">{{t.advisor.title}}</view>
+  <view class="intro-sub">{{t.advisor.sub}}</view>
+</view>
+
+<view class="examples" wx:if="{{!messages.length}}">
+  <view class="ex-label">{{t.advisor.tryAsk}}</view>
+  <view class="ex" wx:for="{{t.advisor.examples}}" wx:key="*this" data-q="{{item}}" bindtap="useExample" hover-class="btn-hover">
+    <text class="ex-q">“</text>
+    <text class="ex-text">{{item}}</text>
+    <view class="chev"></view>
+  </view>
+</view>
+
+<view class="chat">
+  <block wx:for="{{messages}}" wx:key="index" wx:for-item="m" wx:for-index="mi">
+    <view wx:if="{{m.role === 'user'}}" class="msg-user"><text>{{m.text}}</text></view>
+
+    <view wx:else class="msg-ai">
+      <view class="ai-head">
+        <view class="ai-avatar">DG</view>
+        <text class="ai-name">{{t.advisor.recommended}}</text>
+        <text class="ai-mode">{{m.res.mode === 'online' ? t.advisor.online : t.advisor.offline}}</text>
+      </view>
+      <view wx:if="{{m.res.fallback}}" class="ai-warn">{{t.advisor.error}}</view>
+      <view class="ai-summary">{{m.res.matched ? m.res.summary : t.advisor.noMatch}}</view>
+
+      <view class="rec" wx:for="{{m.res.items}}" wx:key="index" wx:for-item="it">
+        <view class="rec-top" data-id="{{it.product.id}}" bindtap="openProduct">
+          <view class="rec-no">{{index + 1}}</view>
+          <view class="rec-visual"><product-visual product="{{it.product}}" size="sm" /></view>
+          <view class="rec-main">
+            <view class="rec-cat">{{it.product.catName}}</view>
+            <view class="rec-title">{{it.product.title}}</view>
+            <view class="price">¥{{it.product.price}}<text class="price-unit">/kg</text></view>
+          </view>
+        </view>
+        <view class="rec-line"><text class="rec-k">{{t.advisor.reason}}</text><text class="rec-v">{{it.reason}}</text></view>
+        <view class="rec-line"><text class="rec-k">{{t.advisor.dosage}}</text><text class="rec-v">{{it.dosage}}</text></view>
+        <view class="rec-add" data-id="{{it.product.id}}" bindtap="addOne" hover-class="btn-hover">+ {{t.common.addCart}}</view>
+      </view>
+
+      <view wx:if="{{m.res.notes}}" class="ai-notes">{{m.res.notes}}</view>
+      <view class="ai-foot">
+        <view class="btn btn-primary ai-all" data-index="{{mi}}" bindtap="addAll" hover-class="btn-hover">{{t.advisor.addAll}}</view>
+      </view>
+      <view class="ai-disc">{{t.advisor.disclaimer}}</view>
+    </view>
+  </block>
+
+  <view wx:if="{{loading}}" class="msg-ai loading">
+    <view class="dots"><view class="dot"></view><view class="dot"></view><view class="dot"></view></view>
+    <text class="loading-t">{{t.advisor.thinking}}</text>
+  </view>
+
+  <view wx:if="{{messages.length && !loading}}" class="clear" bindtap="clear">{{t.advisor.clear}}</view>
+</view>
+
+<view id="end" class="bottom-spacer"></view>
+
+<view class="bottom-bar composer">
+  <input class="composer-input" value="{{input}}" placeholder="{{t.advisor.placeholder}}" placeholder-class="placeholder" bindinput="onInput" bindconfirm="send" confirm-type="send" adjust-position />
+  <view class="composer-send {{input ? 'on' : ''}}" bindtap="send">{{t.advisor.send}}</view>
+</view>

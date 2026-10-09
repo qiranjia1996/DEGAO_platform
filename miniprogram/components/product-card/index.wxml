@@ -1,0 +1,23 @@
+<view wx:if="{{layout === 'grid'}}" class="pc" bindtap="open" hover-class="pc-hover">
+  <product-visual product="{{product}}" size="md" />
+  <view class="pc-body">
+    <view class="pc-cat">{{product.catName}}</view>
+    <view class="pc-title">{{product.title}}</view>
+    <view class="pc-bottom">
+      <view class="price">¥{{product.price}}<text class="price-unit">/kg</text></view>
+      <view class="pc-add" catchtap="add" hover-class="btn-hover">+</view>
+    </view>
+  </view>
+</view>
+<view wx:else class="pcl" bindtap="open" hover-class="pc-hover">
+  <view class="pcl-visual"><product-visual product="{{product}}" size="sm" /></view>
+  <view class="pcl-body">
+    <view class="pc-cat">{{product.catName}}</view>
+    <view class="pc-title">{{product.title}}</view>
+    <view class="pcl-benefit">{{product.benefits[0]}}</view>
+    <view class="pc-bottom">
+      <view class="price">¥{{product.price}}<text class="price-unit">/kg</text></view>
+      <view class="pc-add" catchtap="add" hover-class="btn-hover">+</view>
+    </view>
+  </view>
+</view>

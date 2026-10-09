@@ -1,0 +1,53 @@
+<view class="card box">
+  <view class="box-title">{{t.checkout.items}}</view>
+  <view class="item" wx:for="{{lines}}" wx:key="id">
+    <view class="item-main">
+      <text class="item-title">{{item.title}}</text>
+      <text class="item-sub">{{item.pack}} × {{item.qty}}</text>
+    </view>
+    <text class="item-price">¥{{item.subtotal}}</text>
+  </view>
+  <view class="sum">
+    <text>{{t.cart.total}}</text>
+    <text class="price sum-v">¥{{total}}</text>
+  </view>
+</view>
+
+<view class="card box">
+  <view class="field">
+    <view class="field-label">{{t.checkout.company}} *</view>
+    <input class="field-input" value="{{form.company}}" data-k="company" bindinput="onField" />
+  </view>
+  <view class="field">
+    <view class="field-label">{{t.checkout.contact}} *</view>
+    <input class="field-input" value="{{form.contact}}" data-k="contact" bindinput="onField" />
+  </view>
+  <view class="field">
+    <view class="field-label">{{t.checkout.phone}} *</view>
+    <input class="field-input" type="number" value="{{form.phone}}" data-k="phone" bindinput="onField" />
+  </view>
+  <view class="field">
+    <view class="field-label">{{t.checkout.address}} *</view>
+    <input class="field-input" value="{{form.address}}" data-k="address" bindinput="onField" />
+  </view>
+  <view class="field">
+    <view class="field-label">{{t.checkout.remark}}</view>
+    <input class="field-input" value="{{form.remark}}" placeholder="{{t.checkout.remarkHint}}" placeholder-class="placeholder" data-k="remark" bindinput="onField" />
+  </view>
+</view>
+
+<view class="card box pay">
+  <text class="pay-k">{{t.checkout.invoice}}</text>
+  <text class="pay-v">{{t.checkout.pay}}</text>
+</view>
+
+<view class="demo-note">{{t.common.demo}}</view>
+<view class="bottom-spacer"></view>
+
+<view class="bottom-bar">
+  <view class="total">
+    <text class="total-l">{{t.cart.total}}</text>
+    <text class="price total-v">¥{{total}}</text>
+  </view>
+  <view class="btn btn-primary" bindtap="submit" hover-class="btn-hover">{{t.checkout.submit}}</view>
+</view>

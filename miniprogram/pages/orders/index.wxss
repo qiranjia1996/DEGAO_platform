@@ -1,0 +1,17 @@
+.success { background: linear-gradient(150deg, #0A2F24, #17533F); color: #fff; margin: 24rpx; border-radius: 28rpx; padding: 56rpx 40rpx; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.success-icon { width: 104rpx; height: 104rpx; border-radius: 52rpx; background: #B8915A; display: flex; align-items: center; justify-content: center; }
+.tick { width: 22rpx; height: 42rpx; border-right: 6rpx solid #fff; border-bottom: 6rpx solid #fff; transform: rotate(45deg); margin-top: -10rpx; }
+.success-t { font-size: 38rpx; font-weight: 700; margin-top: 28rpx; }
+.success-s { font-size: 25rpx; opacity: 0.78; margin-top: 12rpx; line-height: 1.6; }
+.success-btn { margin-top: 36rpx; width: 280rpx; height: 76rpx; }
+
+.empty { text-align: center; color: #9AA19D; padding: 160rpx 0; }
+.order { background: #fff; margin: 20rpx 24rpx 0; border-radius: 24rpx; padding: 28rpx; box-shadow: 0 6rpx 24rpx rgba(13,59,46,0.05); }
+.order-new { border: 2rpx solid #B8915A; }
+.order-head { display: flex; justify-content: space-between; padding-bottom: 16rpx; border-bottom: 1rpx solid #EFECE5; }
+.order-no { font-size: 23rpx; color: #66706B; font-family: Menlo, monospace; }
+.order-status { font-size: 23rpx; color: #B8915A; font-weight: 600; }
+.order-item { display: flex; justify-content: space-between; padding: 14rpx 0 0; font-size: 26rpx; }
+.oi-qty { color: #66706B; }
+.order-foot { display: flex; justify-content: space-between; align-items: baseline; margin-top: 18rpx; padding-top: 16rpx; border-top: 1rpx solid #EFECE5; }
+.of-time { font-size: 22rpx; color: #9AA19D; }

@@ -1,0 +1,15 @@
+<view class="pv pv-{{size}} cat-{{product.cat}}">
+  <view class="ring ring-a"></view>
+  <view class="ring ring-b"></view>
+  <view class="pv-head">
+    <text class="pv-brand">DEGAO</text>
+    <text class="pv-mark">{{product.mark}}</text>
+  </view>
+  <view class="pv-main">
+    <text class="pv-big {{product.pct ? '' : 'pv-big-mark'}}">{{product.pct || product.mark}}</text>
+  </view>
+  <view class="pv-foot">
+    <text class="pv-formula">{{product.formula}}</text>
+    <text class="pv-form">{{product.form}}</text>
+  </view>
+</view>

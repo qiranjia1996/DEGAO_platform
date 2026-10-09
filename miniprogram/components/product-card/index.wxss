@@ -1,0 +1,18 @@
+.pc { background: #fff; border-radius: 24rpx; overflow: hidden; box-shadow: 0 8rpx 32rpx rgba(13,59,46,0.06); }
+.pc-hover { opacity: 0.92; }
+.pc-body { padding: 20rpx 22rpx 22rpx; }
+.pc-cat { font-size: 20rpx; color: #B8915A; letter-spacing: 1rpx; }
+.pc-title { font-size: 28rpx; font-weight: 600; color: #17201C; line-height: 1.4; margin-top: 4rpx; min-height: 78rpx;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pc-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 12rpx; }
+.price { color: #0D3B2E; font-weight: 700; font-size: 30rpx; }
+.price-unit { font-size: 20rpx; color: #66706B; font-weight: 400; }
+.pc-add { width: 52rpx; height: 52rpx; border-radius: 26rpx; background: #0D3B2E; color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 34rpx; line-height: 1; }
+.btn-hover { opacity: 0.8; }
+
+.pcl { display: flex; background: #fff; border-radius: 24rpx; overflow: hidden; box-shadow: 0 8rpx 32rpx rgba(13,59,46,0.06); }
+.pcl-visual { width: 220rpx; flex-shrink: 0; }
+.pcl-body { flex: 1; padding: 20rpx 24rpx; min-width: 0; }
+.pcl .pc-title { min-height: 0; }
+.pcl-benefit { font-size: 22rpx; color: #66706B; margin-top: 4rpx; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

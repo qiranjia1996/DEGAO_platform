@@ -1,0 +1,153 @@
+<view class="hero" style="padding-top: {{navTop}}px">
+  <view class="hero-ring r1"></view>
+  <view class="hero-ring r2"></view>
+  <view class="hero-ring r3"></view>
+
+  <view class="nav" style="height: {{navHeight}}px">
+    <view class="logo">
+      <view class="logo-mark">DG</view>
+      <view class="logo-text">
+        <text class="logo-cn">德高农牧</text>
+        <text class="logo-en">DEGAO</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="hero-body">
+    <view class="row-between">
+      <text class="eyebrow">{{t.home.heroKicker}}</text>
+      <view class="lang-pill" bindtap="toggleLang" hover-class="btn-hover">
+        <text class="{{lang === 'zh' ? 'on' : ''}}">中</text>
+        <text class="sep">/</text>
+        <text class="{{lang === 'en' ? 'on' : ''}}">EN</text>
+      </view>
+    </view>
+    <view class="hero-title">
+      <view wx:for="{{heroTitle}}" wx:key="*this">{{item}}</view>
+    </view>
+    <view class="hero-sub">{{t.home.heroSub}}</view>
+    <view class="hero-actions">
+      <view class="btn btn-gold" bindtap="goAdvisor" hover-class="btn-hover">{{t.home.ctaAdvisor}}</view>
+      <view class="btn btn-light" bindtap="goProducts" hover-class="btn-hover">{{t.home.ctaProducts}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="ask" bindtap="goAdvisor" hover-class="btn-hover">
+  <view class="ask-icon">✦</view>
+  <text class="ask-text">{{t.home.searchHint}}</text>
+  <view class="ask-go">AI</view>
+</view>
+
+<view class="stats">
+  <view class="stat" wx:for="{{company.stats}}" wx:key="label">
+    <text class="stat-v">{{item.value}}</text>
+    <text class="stat-l">{{item.label}}</text>
+  </view>
+</view>
+
+<!-- 按养殖品种 -->
+<view class="section">
+  <view class="section-head">
+    <view>
+      <view class="section-title">{{t.home.solutions}}</view>
+      <view class="section-sub">{{t.home.solutionsSub}}</view>
+    </view>
+  </view>
+  <view class="sol-grid">
+    <view class="sol sol-{{item.id}}" wx:for="{{solutions}}" wx:key="id" data-id="{{item.id}}" bindtap="goSpecies" hover-class="btn-hover">
+      <text class="sol-en">{{item.en}}</text>
+      <text class="sol-name">{{item.name}}</text>
+      <text class="sol-focus">{{item.focus}}</text>
+      <view class="sol-items">
+        <text wx:for="{{item.items}}" wx:for-item="n" wx:key="*this" class="sol-item">{{n}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 主推产品 -->
+<view class="section">
+  <view class="section-head">
+    <view>
+      <view class="section-title">{{t.home.featured}}</view>
+      <view class="section-sub">{{t.home.featuredSub}}</view>
+    </view>
+    <text class="section-link" bindtap="goProducts">{{t.common.viewAll}} →</text>
+  </view>
+  <scroll-view scroll-x class="hscroll" enhanced show-scrollbar="{{false}}">
+    <view class="hscroll-inner">
+      <view class="feat" wx:for="{{featured}}" wx:key="id">
+        <product-card product="{{item}}" />
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 产品系列 -->
+<view class="section">
+  <view class="section-head">
+    <view class="section-title">{{t.home.categories}}</view>
+  </view>
+  <view class="container">
+    <view class="card cats">
+      <view class="cat-row" wx:for="{{categories}}" wx:key="id" data-id="{{item.id}}" bindtap="goCategory" hover-class="row-hover">
+        <view class="cat-dot cat-{{item.id}}"></view>
+        <view class="cat-main">
+          <view class="cat-name">{{item.name}}<text class="cat-count">{{item.count}}</text></view>
+          <view class="cat-names">{{item.names}}</view>
+        </view>
+        <view class="chev"></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 资质 -->
+<view class="section">
+  <view class="section-head">
+    <view>
+      <view class="section-title">{{t.home.trust}}</view>
+      <view class="section-sub">{{t.home.trustSub}}</view>
+    </view>
+    <text class="section-link" bindtap="goAbout">{{t.common.more}} →</text>
+  </view>
+  <scroll-view scroll-x class="hscroll" enhanced show-scrollbar="{{false}}">
+    <view class="hscroll-inner">
+      <view class="cert" wx:for="{{company.certs}}" wx:key="code">
+        <text class="cert-code">{{item.code}}</text>
+        <text class="cert-title">{{item.title}}</text>
+        <text class="cert-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 关于 -->
+<view class="section container">
+  <view class="about" bindtap="goAbout" hover-class="btn-hover">
+    <text class="eyebrow">{{t.home.aboutTitle}}</text>
+    <view class="about-slogan">{{company.slogan}}</view>
+    <view class="about-text">{{company.about}}</view>
+    <view class="about-cta">{{t.home.aboutCta}} →</view>
+  </view>
+</view>
+
+<!-- 联系 -->
+<view class="section container">
+  <view class="contact-band">
+    <view>
+      <view class="cb-title">{{t.home.contactTitle}}</view>
+      <view class="cb-sub">{{t.home.contactSub}}</view>
+    </view>
+    <view class="cb-actions">
+      <view class="btn btn-primary cb-btn" bindtap="call" hover-class="btn-hover">{{company.phone}}</view>
+      <view class="cb-link" bindtap="goContact">{{t.nav.contact}} →</view>
+    </view>
+  </view>
+</view>
+
+<view class="demo-note">
+  <view>{{company.name}}</view>
+  <view>{{t.common.demo}}</view>
+</view>

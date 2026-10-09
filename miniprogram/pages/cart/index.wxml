@@ -1,0 +1,37 @@
+<view wx:if="{{!lines.length}}" class="empty">
+  <view class="empty-mark">DG</view>
+  <view class="empty-t">{{t.cart.empty}}</view>
+  <view class="empty-s">{{t.cart.emptySub}}</view>
+  <view class="btn btn-primary empty-btn" bindtap="goShop" hover-class="btn-hover">{{t.cart.go}}</view>
+</view>
+
+<block wx:else>
+  <view class="head">{{itemsText}}</view>
+  <view class="line" wx:for="{{lines}}" wx:key="id">
+    <view class="line-visual" data-id="{{item.id}}" bindtap="open"><product-visual product="{{item}}" size="sm" /></view>
+    <view class="line-main">
+      <view class="line-title" data-id="{{item.id}}" bindtap="open">{{item.title}}</view>
+      <view class="line-sub">{{item.pack}} · ¥{{item.price}}/kg</view>
+      <view class="line-bottom">
+        <text class="price">¥{{item.subtotal}}</text>
+        <view class="stepper">
+          <view class="st-btn" data-id="{{item.id}}" bindtap="minus">−</view>
+          <text class="st-n">{{item.qty}}</text>
+          <view class="st-btn" data-id="{{item.id}}" bindtap="plus">+</view>
+        </view>
+      </view>
+      <text class="line-remove" data-id="{{item.id}}" bindtap="remove">{{t.cart.remove}}</text>
+    </view>
+  </view>
+  <view class="demo-note">{{t.common.demo}}</view>
+  <view class="bottom-spacer"></view>
+
+  <view class="bottom-bar">
+    <view class="total">
+      <text class="total-l">{{t.cart.total}}</text>
+      <text class="price total-v">¥{{total}}</text>
+      <text class="total-n">{{count}} {{t.cart.bags}}</text>
+    </view>
+    <view class="btn btn-primary" bindtap="checkout" hover-class="btn-hover">{{t.cart.checkout}}</view>
+  </view>
+</block>

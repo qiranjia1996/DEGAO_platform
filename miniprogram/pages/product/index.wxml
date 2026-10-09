@@ -1,0 +1,82 @@
+<product-visual product="{{p}}" size="lg" />
+
+<view class="head">
+  <view class="head-cat">{{p.catName}} · {{p.id}}</view>
+  <view class="head-title">{{p.title}}</view>
+  <view class="head-price">
+    <text class="price big">¥{{p.price}}</text><text class="price-unit">/kg</text>
+    <text class="bag">¥{{p.bagPrice}}{{t.common.perBag}} · {{p.pack}}</text>
+  </view>
+  <view class="tags">
+    <text class="tag" wx:for="{{p.species}}" wx:key="id">{{item.name}}</text>
+    <text class="tag tag-gold">FAMI-QS</text>
+  </view>
+</view>
+
+<view class="block" wx:if="{{grades.length > 1}}">
+  <view class="block-title">{{t.product.grades}}</view>
+  <view class="grades">
+    <view wx:for="{{grades}}" wx:key="id" class="grade {{item.id === p.id ? 'grade-on' : ''}}" data-id="{{item.id}}" bindtap="pickGrade">
+      <text class="grade-name">{{item.pct || item.spec}} {{item.form}}</text>
+      <text class="grade-price">¥{{item.price}}/kg</text>
+    </view>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block-title">{{t.product.intro}}</view>
+  <view class="intro">{{p.intro}}</view>
+  <view class="ask-ai" bindtap="askAI" hover-class="btn-hover">
+    <text class="ask-star">✦</text>
+    <text>{{t.product.askAI}}</text>
+    <view class="chev"></view>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block-title">{{t.product.benefits}}</view>
+  <view class="benefits">
+    <view class="benefit" wx:for="{{p.benefits}}" wx:key="*this">
+      <text class="benefit-no">0{{index + 1}}</text>
+      <text class="benefit-text">{{item}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block-title">{{t.product.specs}}</view>
+  <view class="spec-table">
+    <view class="spec-row"><text class="spec-k">{{t.product.code}}</text><text class="spec-v">{{p.id}}</text></view>
+    <view class="spec-row"><text class="spec-k">{{t.product.spec}}</text><text class="spec-v">{{p.spec}}</text></view>
+    <view class="spec-row"><text class="spec-k">{{t.product.form}}</text><text class="spec-v">{{p.form}}</text></view>
+    <view class="spec-row"><text class="spec-k">{{t.product.formula}}</text><text class="spec-v serif">{{p.formula}}</text></view>
+    <view class="spec-row"><text class="spec-k">{{t.product.pack}}</text><text class="spec-v">{{p.pack}}</text></view>
+    <view class="spec-row"><text class="spec-k">{{t.product.dosage}}</text><text class="spec-v">{{p.dose}}</text></view>
+  </view>
+  <view class="note">{{t.product.note}}</view>
+</view>
+
+<view class="block" wx:if="{{related.length}}">
+  <view class="block-title">{{p.catName}}</view>
+  <view class="related">
+    <view class="rel" wx:for="{{related}}" wx:key="id">
+      <product-card product="{{item}}" layout="list" />
+    </view>
+  </view>
+</view>
+
+<view class="demo-note">{{t.common.demo}}</view>
+<view class="bottom-spacer"></view>
+
+<view class="bottom-bar">
+  <view class="bb-call" bindtap="call" hover-class="btn-hover">
+    <text class="bb-call-t">{{t.common.inquiry}}</text>
+  </view>
+  <view class="stepper">
+    <view class="st-btn" bindtap="minus">−</view>
+    <text class="st-n">{{qty}}</text>
+    <view class="st-btn" bindtap="plus">+</view>
+  </view>
+  <view class="btn btn-ghost bb-btn" bindtap="addCart" hover-class="btn-hover">{{t.common.addCart}}</view>
+  <view class="btn btn-primary bb-btn" bindtap="buyNow" hover-class="btn-hover">{{t.common.buyNow}}</view>
+</view>

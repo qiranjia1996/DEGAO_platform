@@ -1,0 +1,60 @@
+<view class="banner">
+  <view class="b-ring r1"></view>
+  <view class="b-ring r2"></view>
+  <text class="eyebrow">DEGAO · EST. 2019</text>
+  <view class="b-name">{{name}}</view>
+  <view class="b-slogan">{{slogan}}</view>
+  <view class="b-tag">{{tagline}}</view>
+</view>
+
+<view class="stats">
+  <view class="stat" wx:for="{{stats}}" wx:key="label">
+    <text class="stat-v">{{item.value}}</text>
+    <text class="stat-l">{{item.label}}</text>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block-title">{{t.about.story}}</view>
+  <view class="para" wx:for="{{about}}" wx:key="*this">{{item}}</view>
+</view>
+
+<view class="block">
+  <view class="block-title">{{t.about.milestones}}</view>
+  <view class="timeline">
+    <view class="tl" wx:for="{{milestones}}" wx:key="year">
+      <view class="tl-dot"></view>
+      <text class="tl-year">{{item.year}}</text>
+      <text class="tl-text">{{item.text}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block-title">{{t.about.certs}}</view>
+  <view class="certs">
+    <view class="cert" wx:for="{{certs}}" wx:key="code">
+      <text class="cert-code">{{item.code}}</text>
+      <text class="cert-title">{{item.title}}</text>
+      <text class="cert-desc">{{item.desc}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block-title">{{t.about.portfolio}}</view>
+  <view class="pf" wx:for="{{portfolio}}" wx:key="id" data-id="{{item.id}}" bindtap="goCat" hover-class="row-hover">
+    <view class="pf-bar cat-{{item.id}}"></view>
+    <view class="pf-main">
+      <view class="pf-name">{{item.name}}</view>
+      <view class="pf-items">
+        <text class="tag" wx:for="{{item.items}}" wx:for-item="n" wx:key="*this">{{n}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="container" style="margin-top: 32rpx;">
+  <view class="btn btn-primary" bindtap="contact" hover-class="btn-hover">{{t.nav.contact}}</view>
+</view>
+<view class="demo-note">{{t.common.demo}}</view>

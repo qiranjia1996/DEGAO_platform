@@ -1,0 +1,27 @@
+<view class="top">
+  <view class="search">
+    <view class="search-icon"></view>
+    <input class="search-input" placeholder="{{t.products.search}}" placeholder-class="placeholder" value="{{keyword}}" bindinput="onSearch" confirm-type="search" />
+    <view wx:if="{{keyword}}" class="search-clear" bindtap="clearSearch">×</view>
+  </view>
+  <scroll-view scroll-x class="chips" enhanced show-scrollbar="{{false}}">
+    <view class="chips-inner">
+      <view wx:for="{{cats}}" wx:key="id" class="chip {{cat === item.id ? 'chip-on' : ''}}" data-id="{{item.id}}" bindtap="pickCat">{{item.name}}</view>
+    </view>
+  </scroll-view>
+  <view class="species">
+    <text class="species-label">{{t.products.species}}</text>
+    <view wx:for="{{speciesList}}" wx:key="id" class="sp {{species === item.id ? 'sp-on' : ''}}" data-id="{{item.id}}" bindtap="pickSpecies">{{item.name}}</view>
+  </view>
+</view>
+
+<view class="count">{{countText}}</view>
+
+<view class="grid">
+  <view class="cell" wx:for="{{list}}" wx:key="id">
+    <product-card product="{{item}}" />
+  </view>
+</view>
+
+<view wx:if="{{!list.length}}" class="empty">{{t.common.empty}}</view>
+<view class="demo-note">{{t.common.demo}}</view>

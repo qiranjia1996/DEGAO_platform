@@ -1,0 +1,55 @@
+.intro { position: relative; overflow: hidden; margin: 24rpx 24rpx 0; border-radius: 28rpx; padding: 40rpx 36rpx; color: #fff; background: linear-gradient(150deg, #0A2F24, #17533F); }
+.intro-ring { position: absolute; width: 360rpx; height: 360rpx; border-radius: 50%; border: 2rpx solid rgba(212,177,122,0.3); right: -120rpx; top: -140rpx; }
+.mode { font-size: 20rpx; color: #E3C795; border: 1rpx solid rgba(227,199,149,0.5); padding: 2rpx 14rpx; border-radius: 20rpx; }
+.intro-title { font-size: 44rpx; font-weight: 700; margin-top: 14rpx; }
+.intro-sub { font-size: 25rpx; opacity: 0.78; margin-top: 10rpx; line-height: 1.7; }
+
+.examples { margin: 32rpx 24rpx 0; }
+.ex-label { font-size: 24rpx; color: #9AA19D; margin: 0 8rpx 14rpx; }
+.ex { background: #fff; border-radius: 20rpx; padding: 26rpx 28rpx; margin-bottom: 16rpx; display: flex; align-items: center; box-shadow: 0 4rpx 20rpx rgba(13,59,46,0.04); }
+.ex-q { font-size: 44rpx; color: #B8915A; font-family: Georgia, serif; line-height: 1; margin-right: 14rpx; height: 30rpx; }
+.ex-text { flex: 1; font-size: 27rpx; color: #17201C; }
+
+.chat { padding: 16rpx 24rpx 0; }
+.msg-user { display: flex; justify-content: flex-end; margin-top: 28rpx; }
+.msg-user text { max-width: 80%; background: #0D3B2E; color: #fff; border-radius: 28rpx 28rpx 8rpx 28rpx; padding: 22rpx 28rpx; font-size: 27rpx; line-height: 1.6; }
+
+.msg-ai { background: #fff; border-radius: 8rpx 28rpx 28rpx 28rpx; padding: 30rpx 28rpx; margin-top: 28rpx; box-shadow: 0 8rpx 32rpx rgba(13,59,46,0.06); }
+.ai-head { display: flex; align-items: center; }
+.ai-avatar { width: 52rpx; height: 52rpx; border-radius: 14rpx; background: #0D3B2E; color: #D4B17A; font-size: 20rpx; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; }
+.ai-name { font-size: 28rpx; font-weight: 700; margin-left: 16rpx; flex: 1; }
+.ai-mode { font-size: 20rpx; color: #8A6A3A; background: #F3EADB; padding: 2rpx 14rpx; border-radius: 16rpx; }
+.ai-warn { font-size: 22rpx; color: #A0522D; margin-top: 16rpx; }
+.ai-summary { font-size: 27rpx; line-height: 1.75; color: #2B3530; margin-top: 18rpx; }
+
+.rec { border: 1rpx solid #ECE8DF; border-radius: 20rpx; margin-top: 22rpx; overflow: hidden; }
+.rec-top { display: flex; align-items: stretch; position: relative; }
+.rec-no { position: absolute; left: 12rpx; top: 12rpx; z-index: 2; width: 36rpx; height: 36rpx; border-radius: 18rpx; background: #B8915A; color: #fff; font-size: 20rpx; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.rec-visual { width: 190rpx; flex-shrink: 0; }
+.rec-main { flex: 1; padding: 18rpx 22rpx; display: flex; flex-direction: column; justify-content: center; }
+.rec-cat { font-size: 20rpx; color: #B8915A; }
+.rec-title { font-size: 28rpx; font-weight: 600; margin: 4rpx 0 6rpx; line-height: 1.4; }
+.rec-line { display: flex; padding: 14rpx 22rpx 0; font-size: 24rpx; line-height: 1.6; }
+.rec-k { color: #9AA19D; width: 130rpx; flex-shrink: 0; }
+.rec-v { flex: 1; color: #2B3530; }
+.rec-add { margin: 16rpx 22rpx 20rpx; height: 64rpx; border-radius: 32rpx; background: #E7F0EB; color: #0D3B2E; font-size: 24rpx; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+
+.ai-notes { margin-top: 20rpx; background: #F7F6F2; border-radius: 16rpx; padding: 20rpx 22rpx; font-size: 24rpx; color: #4B5550; line-height: 1.6; }
+.ai-foot { margin-top: 24rpx; }
+.ai-all { height: 80rpx; font-size: 26rpx; }
+.ai-disc { font-size: 20rpx; color: #9AA19D; margin-top: 18rpx; line-height: 1.5; }
+
+.loading { display: flex; align-items: center; }
+.dots { display: flex; margin-right: 16rpx; }
+.dot { width: 12rpx; height: 12rpx; border-radius: 6rpx; background: #B8915A; margin-right: 8rpx; animation: blink 1.2s infinite ease-in-out; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+.loading-t { font-size: 25rpx; color: #66706B; }
+
+.clear { text-align: center; font-size: 23rpx; color: #9AA19D; padding: 32rpx 0 0; }
+
+.composer { padding-top: 16rpx; }
+.composer-input { flex: 1; height: 80rpx; background: #F2F0EA; border-radius: 40rpx; padding: 0 30rpx; font-size: 26rpx; }
+.composer-send { margin-left: 16rpx; height: 80rpx; padding: 0 32rpx; border-radius: 40rpx; background: #C9CFCB; color: #fff; display: flex; align-items: center; font-size: 26rpx; font-weight: 600; }
+.composer-send.on { background: #0D3B2E; }

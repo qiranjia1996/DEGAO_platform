@@ -10,3 +10,5 @@ dist/
 build/
 .next/
 *.log
+.Rhistory
+project.private.config.json

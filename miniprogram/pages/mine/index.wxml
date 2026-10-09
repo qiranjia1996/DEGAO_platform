@@ -1,0 +1,44 @@
+<view class="profile">
+  <view class="profile-ring"></view>
+  <view class="avatar">DG</view>
+  <view class="profile-main">
+    <view class="hello">{{t.mine.hello}}</view>
+    <view class="hello-sub">{{t.mine.sub}}</view>
+  </view>
+</view>
+
+<view class="quick">
+  <view class="q" data-url="/pages/orders/index" bindtap="go" hover-class="btn-hover">
+    <text class="q-v">{{orderCount}}</text>
+    <text class="q-l">{{t.mine.orders}}</text>
+  </view>
+  <view class="q" data-url="/pages/cart/index" bindtap="go" hover-class="btn-hover">
+    <text class="q-v">{{cartCount}}</text>
+    <text class="q-l">{{t.mine.cart}}</text>
+  </view>
+</view>
+
+<view class="card menu">
+  <view class="menu-row" data-url="/pages/advisor/index" bindtap="go" hover-class="row-hover">
+    <text class="menu-ico">✦</text><text class="menu-t">{{t.mine.advisor}}</text><view class="chev"></view>
+  </view>
+  <view class="menu-row" data-url="/pages/orders/index" bindtap="go" hover-class="row-hover">
+    <text class="menu-ico">◇</text><text class="menu-t">{{t.mine.orders}}</text><view class="chev"></view>
+  </view>
+  <view class="menu-row" data-url="/pages/about/index" bindtap="go" hover-class="row-hover">
+    <text class="menu-ico">◎</text><text class="menu-t">{{t.mine.about}}</text><view class="chev"></view>
+  </view>
+  <view class="menu-row" data-url="/pages/contact/index" bindtap="go" hover-class="row-hover">
+    <text class="menu-ico">☏</text><text class="menu-t">{{t.mine.contact}}</text><view class="chev"></view>
+  </view>
+</view>
+
+<view class="card menu">
+  <view class="lang-title">{{t.mine.language}}</view>
+  <view class="seg">
+    <view class="seg-i {{lang === 'zh' ? 'seg-on' : ''}}" data-lang="zh" bindtap="setLang">简体中文</view>
+    <view class="seg-i {{lang === 'en' ? 'seg-on' : ''}}" data-lang="en" bindtap="setLang">English</view>
+  </view>
+</view>
+
+<view class="demo-note">{{t.mine.version}} 0.1.0-alpha · {{t.common.demo}}</view>

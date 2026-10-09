@@ -1,0 +1,44 @@
+<view class="hotline" bindtap="call" hover-class="btn-hover">
+  <view class="hl-ring"></view>
+  <text class="eyebrow">{{t.contact.phone}}</text>
+  <view class="hl-num">{{c.phone}}</view>
+  <view class="hl-name">{{name}}</view>
+  <view class="btn btn-gold hl-btn">{{t.common.call}}</view>
+</view>
+
+<view class="card info">
+  <view class="info-row">
+    <text class="info-k">{{t.contact.address}}</text>
+    <text class="info-v">{{c.address}}</text>
+    <text class="info-copy" data-v="{{c.address}}" bindtap="copy">{{t.common.copy}}</text>
+  </view>
+  <view class="info-row">
+    <text class="info-k">{{t.contact.email}}</text>
+    <text class="info-v">{{c.email}}</text>
+    <text class="info-copy" data-v="{{c.email}}" bindtap="copy">{{t.common.copy}}</text>
+  </view>
+  <view class="info-row">
+    <text class="info-k">{{t.contact.fax}}</text>
+    <text class="info-v">{{c.fax}}</text>
+    <text class="info-copy" data-v="{{c.fax}}" bindtap="copy">{{t.common.copy}}</text>
+  </view>
+</view>
+
+<view class="card form">
+  <view class="form-title">{{t.contact.form}}</view>
+  <view class="field">
+    <view class="field-label">{{t.contact.name}}</view>
+    <input class="field-input" value="{{form.name}}" data-k="name" bindinput="onField" />
+  </view>
+  <view class="field">
+    <view class="field-label">{{t.contact.tel}}</view>
+    <input class="field-input" type="number" value="{{form.tel}}" data-k="tel" bindinput="onField" />
+  </view>
+  <view class="field">
+    <view class="field-label">{{t.contact.msg}}</view>
+    <textarea class="field-textarea" value="{{form.msg}}" data-k="msg" bindinput="onField" />
+  </view>
+  <view class="btn btn-primary form-btn" bindtap="submit" hover-class="btn-hover">{{t.common.submit}}</view>
+</view>
+
+<view class="demo-note">{{t.common.demo}}</view>

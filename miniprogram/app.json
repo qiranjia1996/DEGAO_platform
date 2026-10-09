@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/products/index",
+    "pages/advisor/index",
+    "pages/cart/index",
+    "pages/mine/index",
+    "pages/product/index",
+    "pages/about/index",
+    "pages/contact/index",
+    "pages/checkout/index",
+    "pages/orders/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#0D3B2E",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "德高农牧",
+    "backgroundColor": "#F5F3EE",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8A918D",
+    "selectedColor": "#0D3B2E",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页", "iconPath": "images/tab/home.png", "selectedIconPath": "images/tab/home-on.png" },
+      { "pagePath": "pages/products/index", "text": "产品", "iconPath": "images/tab/grid.png", "selectedIconPath": "images/tab/grid-on.png" },
+      { "pagePath": "pages/advisor/index", "text": "AI 选品", "iconPath": "images/tab/spark.png", "selectedIconPath": "images/tab/spark-on.png" },
+      { "pagePath": "pages/cart/index", "text": "采购单", "iconPath": "images/tab/cart.png", "selectedIconPath": "images/tab/cart-on.png" },
+      { "pagePath": "pages/mine/index", "text": "我的", "iconPath": "images/tab/user.png", "selectedIconPath": "images/tab/user-on.png" }
+    ]
+  },
+  "usingComponents": {
+    "product-visual": "/components/product-visual/index",
+    "product-card": "/components/product-card/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
