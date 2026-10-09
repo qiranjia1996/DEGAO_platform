@@ -5,8 +5,89 @@
     <text class="mode">{{online ? t.advisor.online : t.advisor.offline}}</text>
   </view>
   <view class="intro-title red-bar">{{t.advisor.title}}</view>
-  <view class="intro-sub">{{t.advisor.sub}}</view>
+  <view class="intro-sub">{{mode === 'tree' ? t.advisor.treeSub : t.advisor.sub}}</view>
 </view>
+
+<view class="seg">
+  <view class="seg-i {{mode === 'tree' ? 'seg-on' : ''}}" data-mode="tree" bindtap="switchMode">{{t.advisor.modeTree}}</view>
+  <view class="seg-i {{mode === 'chat' ? 'seg-on' : ''}}" data-mode="chat" bindtap="switchMode">{{t.advisor.modeChat}}</view>
+</view>
+
+<!-- 问答选品 -->
+<view wx:if="{{mode === 'tree'}}" class="tree">
+  <view wx:if="{{crumbs.length}}" class="crumbs">
+    <view class="crumb-path">
+      <text wx:for="{{crumbs}}" wx:key="*this" class="crumb">{{item}}</text>
+    </view>
+    <view class="crumb-actions">
+      <text class="crumb-act" bindtap="treeBack">‹ {{t.advisor.back}}</text>
+      <text class="crumb-act" bindtap="treeRestart">{{t.advisor.restart}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{node}}" class="step">
+    <view class="step-no">{{stepNo}} <text class="step-total">/ {{stepTotal}}</text></view>
+    <view class="step-q">{{node.q}}</view>
+    <view class="opts">
+      <view class="opt" wx:for="{{node.options}}" wx:key="index" data-index="{{item.index}}" bindtap="pickOption" hover-class="row-hover">
+        <view wx:if="{{item.icon}}" class="opt-icon"><image src="{{item.icon}}" mode="aspectFit" /></view>
+        <view class="opt-main">
+          <view class="opt-label">{{item.label}}</view>
+          <view class="opt-sub">{{item.sub}}</view>
+        </view>
+        <view class="chev"></view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{result}}" class="res">
+    <view class="res-head">
+      <text class="res-kicker">{{t.advisor.resultTitle}}</text>
+      <view class="res-title">{{result.title}}</view>
+    </view>
+    <view class="res-reason">{{result.reason}}</view>
+
+    <view class="rec" wx:for="{{result.items}}" wx:key="index" wx:for-item="it">
+      <view class="rec-top" data-id="{{it.product.id}}" bindtap="openProduct">
+        <view class="rec-no">0{{index + 1}}</view>
+        <view class="rec-visual"><product-visual product="{{it.product}}" size="sm" /></view>
+        <view class="rec-main">
+          <view class="rec-cat">{{it.product.catName}}</view>
+          <view class="rec-title">{{it.product.title}}</view>
+          <view class="price">¥{{it.product.price}}<text class="price-unit">/kg</text></view>
+        </view>
+      </view>
+      <view class="rec-line"><text class="rec-k">{{t.advisor.role}}</text><text class="rec-v">{{it.role}}</text></view>
+      <view class="rec-line"><text class="rec-k">{{t.advisor.dosage}}</text><text class="rec-v">{{it.product.dose}}</text></view>
+      <view class="rec-add" data-id="{{it.product.id}}" bindtap="addOne" hover-class="btn-hover">+ {{t.common.addCart}}</view>
+    </view>
+
+    <view class="res-actions">
+      <view class="btn btn-primary" bindtap="treeAddAll" hover-class="btn-hover">{{t.advisor.addAll}}</view>
+      <view class="res-links">
+        <text class="res-link" bindtap="treeRestart">{{t.advisor.restart}}</text>
+        <text class="res-link" bindtap="treeAskChat">{{t.advisor.askChat}} ›</text>
+      </view>
+    </view>
+
+    <view class="refs">
+      <view class="refs-title">{{t.advisor.refsTitle}}</view>
+      <view class="ref" wx:for="{{result.refs}}" wx:key="id" data-url="{{item.url}}" bindtap="openRef" hover-class="row-hover">
+        <text class="ref-no">[{{item.no}}]</text>
+        <view class="ref-main">
+          <view class="ref-finding">{{item.finding}}</view>
+          <view class="ref-meta">{{item.authors}} · {{item.year}} · {{item.journal}}</view>
+        </view>
+      </view>
+      <view class="refs-note">{{t.advisor.refsNote}}</view>
+    </view>
+    <view class="ai-disc">{{t.advisor.disclaimer}}</view>
+  </view>
+  <view class="bottom-gap"></view>
+</view>
+
+<!-- 对话咨询 -->
+<block wx:if="{{mode === 'chat'}}">
 
 <view class="examples" wx:if="{{!messages.length}}">
   <view class="ex-label">{{t.advisor.tryAsk}}</view>
@@ -69,3 +150,4 @@
   <input class="composer-input" value="{{input}}" placeholder="{{t.advisor.placeholder}}" placeholder-class="placeholder" bindinput="onInput" bindconfirm="send" confirm-type="send" adjust-position />
   <view class="composer-send {{input ? 'on' : ''}}" bindtap="send">{{t.advisor.send}}</view>
 </view>
+</block>

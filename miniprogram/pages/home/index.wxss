@@ -55,6 +55,9 @@ page { background: #F6F5F1; }
 .sol-name { font-family: var(--brush); font-weight: normal; font-size: 36rpx; margin-top: 20rpx; letter-spacing: 2rpx; }
 .sol-focus { font-size: 21rpx; color: var(--c-sub); margin-top: 6rpx; line-height: 1.5; }
 
+.tree-cta { display: flex; align-items: center; justify-content: space-between; margin: 0 32rpx; padding: 26rpx 26rpx; background: #fff; border: 1rpx solid var(--c-line); border-top: none; }
+.tree-cta-t { font-size: 26rpx; color: var(--c-green); letter-spacing: 1rpx; }
+
 /* 商品流 */
 .feed { display: flex; flex-wrap: wrap; justify-content: space-between; padding: 0 32rpx; }
 .feed-cell { width: calc(50% - 9rpx); margin-bottom: 18rpx; }

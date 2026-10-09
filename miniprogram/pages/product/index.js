@@ -1,6 +1,7 @@
 const i18n = require('../../utils/i18n')
 const catalog = require('../../data/catalog')
 const company = require('../../data/company')
+const references = require('../../data/references')
 const store = require('../../utils/store')
 
 Page({
@@ -25,7 +26,8 @@ Page({
       t,
       p,
       grades: catalog.getSiblings(this.id, lang),
-      related: catalog.getProducts(lang).filter(x => x.cat === p.cat && x.series !== p.series).slice(0, 4)
+      related: catalog.getProducts(lang).filter(x => x.cat === p.cat && x.series !== p.series).slice(0, 4),
+      refs: references.getSeriesRefs(p.series, lang)
     })
   },
 
@@ -55,6 +57,17 @@ Page({
 
   call() {
     wx.makePhoneCall({ phoneNumber: company.contact.phone, fail() {} })
+  },
+
+  // 小程序里复制文献链接，网页版直接打开
+  openRef(e) {
+    const url = e.currentTarget.dataset.url
+    if (typeof window !== 'undefined' && window.open) {
+      window.open(url, '_blank')
+      return
+    }
+    const title = this.data.t.advisor.linkCopied
+    wx.setClipboardData({ data: url, success: () => wx.showToast({ title, icon: 'none' }) })
   },
 
   askAI() {

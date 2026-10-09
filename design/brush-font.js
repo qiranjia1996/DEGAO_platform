@@ -20,7 +20,7 @@ const catalog = require(path.join(MP, 'data/catalog.js'))
 const texts = [
   d.home.heroTitle, d.home.solutions, d.home.featured, d.home.categories, d.home.trust, d.home.contactTitle,
   d.product.intro, d.product.benefits, d.product.specs, d.product.grades,
-  d.advisor.title, d.advisor.recommended,
+  d.advisor.title, d.advisor.recommended, d.advisor.resultTitle, d.advisor.refsTitle, d.product.refs,
   d.cart.empty, d.checkout.items, d.checkout.success, d.mine.hello, d.contact.form,
   d.about.story, d.about.milestones, d.about.certs, d.about.portfolio,
   company.slogan.zh, company.name.zh,

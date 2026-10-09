@@ -62,6 +62,10 @@
       <view class="sol-focus">{{item.focus}}</view>
     </view>
   </view>
+  <view class="tree-cta" bindtap="goTree" hover-class="row-hover">
+    <text class="tree-cta-t">{{t.home.treeCta}}</text>
+    <view class="chev"></view>
+  </view>
 </view>
 
 <!-- 主推产品 -->

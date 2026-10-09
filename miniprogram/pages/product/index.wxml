@@ -56,6 +56,18 @@
   <view class="note">{{t.product.note}}</view>
 </view>
 
+<view class="block" wx:if="{{refs.length}}">
+  <view class="block-title">{{t.product.refs}}</view>
+  <view class="ref" wx:for="{{refs}}" wx:key="id" data-url="{{item.url}}" bindtap="openRef" hover-class="row-hover">
+    <text class="ref-no">0{{index + 1}}</text>
+    <view class="ref-main">
+      <view class="ref-finding">{{item.finding}}</view>
+      <view class="ref-meta">{{item.authors}} · {{item.year}} · {{item.journal}}</view>
+    </view>
+  </view>
+  <view class="note">{{t.advisor.refsNote}}</view>
+</view>
+
 <view class="block" wx:if="{{related.length}}">
   <view class="block-title">{{p.catName}}</view>
   <view class="related">

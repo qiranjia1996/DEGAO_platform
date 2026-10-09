@@ -24,14 +24,16 @@ const dict = {
       categories: '产品系列',
       trust: '资质与认证', trustSub: '质量体系与权威认证',
       aboutTitle: '关于德高', aboutCta: '公司介绍',
-      contactTitle: '合作洽谈', contactSub: '欢迎来厂参观、指导、合作、洽购'
+      contactTitle: '合作洽谈', contactSub: '欢迎来厂参观、指导、合作、洽购',
+      treeCta: '3 步找到适合您的产品'
     },
     products: { all: '全部', search: '搜索产品名称或功能', count: '共 {n} 个产品', species: '适用动物' },
     product: {
       intro: '产品介绍', benefits: '核心功效', specs: '规格参数', species: '适用动物', dosage: '参考添加量',
       spec: '有效含量', form: '剂型', pack: '包装', formula: '分子式 / 类别', code: '产品编号',
       grades: '可选规格', qty: '采购数量', bags: '袋', note: '添加量为行业参考范围，具体方案请咨询德高技术服务团队。',
-      askAI: '问问 AI 这个产品适合我吗', inquiry: '电话询价'
+      askAI: '问问 AI 这个产品适合我吗', inquiry: '电话询价',
+      refs: '研究依据'
     },
     advisor: {
       title: 'AI 选品顾问',
@@ -45,7 +47,13 @@ const dict = {
       disclaimer: 'AI 建议仅供参考，具体配方请咨询德高技术服务或执业兽医。',
       noMatch: '暂时没能准确理解您的需求。请补充动物种类、生长阶段和遇到的问题，下面先为您列出德高的主推产品：',
       error: 'AI 服务暂时不可用，已切换为本地智能匹配。',
-      clear: '清空对话', addAll: '全部加入采购单'
+      clear: '清空对话', addAll: '全部加入采购单',
+      modeTree: '问答选品', modeChat: '对话咨询',
+      treeSub: '回答几个问题，我们根据研究文献为您推荐产品组合。',
+      step: '第 {n} 步', back: '上一步', restart: '重新选择', resultTitle: '为您推荐', role: '作用',
+      askChat: '继续对话咨询', askChatQ: '{path}，还有什么需要注意的？',
+      refsTitle: '研究依据', refsNote: '以下为该类成分的公开研究文献，结论来自研究条件，不代表对德高产品的单独测试。',
+      linkCopied: '文献链接已复制'
     },
     cart: {
       empty: '采购单还是空的', emptySub: '去产品中心或让 AI 帮您选品', go: '去选品',
@@ -93,14 +101,16 @@ const dict = {
       categories: 'Product Lines',
       trust: 'Certifications', trustSub: 'Quality systems & recognitions',
       aboutTitle: 'About Degao', aboutCta: 'Our story',
-      contactTitle: 'Partner With Us', contactSub: 'Factory visits, technical exchange and orders welcome'
+      contactTitle: 'Partner With Us', contactSub: 'Factory visits, technical exchange and orders welcome',
+      treeCta: 'Find the right products in 3 steps'
     },
     products: { all: 'All', search: 'Search by name or function', count: '{n} products', species: 'Species' },
     product: {
       intro: 'Overview', benefits: 'Key Benefits', specs: 'Specifications', species: 'Target Species', dosage: 'Suggested Inclusion',
       spec: 'Active content', form: 'Form', pack: 'Packaging', formula: 'Formula / Class', code: 'Product code',
       grades: 'Available grades', qty: 'Quantity', bags: 'bags', note: 'Inclusion rates are industry reference ranges. Please consult Degao technical service for your formulation.',
-      askAI: 'Ask AI if this product fits my farm', inquiry: 'Call for quote'
+      askAI: 'Ask AI if this product fits my farm', inquiry: 'Call for quote',
+      refs: 'Research evidence'
     },
     advisor: {
       title: 'AI Product Advisor',
@@ -114,7 +124,13 @@ const dict = {
       disclaimer: 'AI suggestions are for reference only. Consult Degao technical service or a licensed veterinarian for formulations.',
       noMatch: 'I couldn’t pin down your needs yet. Please add species, production stage and the issue. Meanwhile, here are our flagship products:',
       error: 'AI service is unavailable — switched to offline smart match.',
-      clear: 'Clear chat', addAll: 'Add all to list'
+      clear: 'Clear chat', addAll: 'Add all to list',
+      modeTree: 'Guided', modeChat: 'Chat',
+      treeSub: 'Answer a few questions and we will recommend a research-backed combination.',
+      step: 'Step {n}', back: 'Back', restart: 'Start over', resultTitle: 'Recommended for you', role: 'Role',
+      askChat: 'Ask a follow-up', askChatQ: '{path} — anything else I should know?',
+      refsTitle: 'Research evidence', refsNote: 'Published studies on these ingredients. Results reflect study conditions and are not tests of Degao products.',
+      linkCopied: 'Reference link copied'
     },
     cart: {
       empty: 'Your purchase list is empty', emptySub: 'Browse products or let AI pick for you', go: 'Find products',

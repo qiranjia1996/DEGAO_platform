@@ -1,24 +1,98 @@
 const i18n = require('../../utils/i18n')
 const advisor = require('../../utils/advisor')
+const tree = require('../../utils/tree')
 const store = require('../../utils/store')
 const config = require('../../config')
 
+const pad = n => (n < 10 ? '0' : '') + n
+
 Page({
-  data: { messages: [], input: '', loading: false },
+  // mode：tree 问答选品 / chat 对话咨询；path：问答选品里已选的选项序号
+  data: { mode: 'tree', path: [], crumbs: [], messages: [], input: '', loading: false },
 
   onShow() {
     i18n.applyChrome('advisor')
     store.syncBadge()
     const lang = i18n.getLang()
-    if (lang !== this.data.lang) this.setData({ messages: [] })
+    if (lang !== this.data.lang) this.setData({ messages: [], path: [] })
     this.setData({ lang, t: i18n.t(lang), online: !!config.llm.apiKey })
-    const q = getApp().globalData.advisorQuery
+
+    const app = getApp()
+    const start = app.globalData.advisorTree
+    if (start) {
+      app.globalData.advisorTree = null
+      this.setData({ mode: 'tree', path: start.species ? tree.pathForSpecies(start.species) : [] })
+    }
+    this.renderTree()
+
+    const q = app.globalData.advisorQuery
     if (q) {
-      getApp().globalData.advisorQuery = ''
+      app.globalData.advisorQuery = ''
+      this.setData({ mode: 'chat' })
       this.ask(q)
     }
   },
 
+  switchMode(e) {
+    const mode = e.currentTarget.dataset.mode
+    if (mode !== this.data.mode) this.setData({ mode })
+  },
+
+  // ---------- 问答选品 ----------
+  renderTree() {
+    const { path, lang } = this.data
+    const w = tree.walk(path, lang)
+    const data = { crumbs: w.crumbs, node: w.node || null, result: w.result || null }
+    if (w.node) {
+      data.stepNo = pad(path.length + 1)
+      data.stepTotal = pad(path.length + tree.depthFrom(w.node.id))
+    }
+    this.setData(data)
+  },
+
+  setPath(path) {
+    this.setData({ path }, () => {
+      this.renderTree()
+      wx.pageScrollTo({ scrollTop: 0, duration: 0, fail() {} })
+    })
+  },
+
+  pickOption(e) {
+    this.setPath(this.data.path.concat(Number(e.currentTarget.dataset.index)))
+  },
+
+  treeBack() {
+    this.setPath(this.data.path.slice(0, -1))
+  },
+
+  treeRestart() {
+    this.setPath([])
+  },
+
+  treeAddAll() {
+    this.data.result.items.forEach(i => store.addToCart(i.product.id, 1))
+    wx.showToast({ title: this.data.t.common.added, icon: 'success' })
+  },
+
+  // 带着已选的路径切到对话咨询
+  treeAskChat() {
+    const q = i18n.fmt(this.data.t.advisor.askChatQ, { path: this.data.crumbs.join(' · ') })
+    this.setData({ mode: 'chat' })
+    this.ask(q)
+  },
+
+  // 小程序里不能直接打开外部网页，复制文献链接；网页版直接在新标签页打开
+  openRef(e) {
+    const url = e.currentTarget.dataset.url
+    if (typeof window !== 'undefined' && window.open) {
+      window.open(url, '_blank')
+      return
+    }
+    const title = this.data.t.advisor.linkCopied
+    wx.setClipboardData({ data: url, success: () => wx.showToast({ title, icon: 'none' }) })
+  },
+
+  // ---------- 对话咨询 ----------
   onInput(e) {
     this.setData({ input: e.detail.value })
   },

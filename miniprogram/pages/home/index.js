@@ -74,6 +74,11 @@ Page({
     wx.switchTab({ url: '/pages/advisor/index' })
   },
 
+  goTree() {
+    getApp().globalData.advisorTree = {}
+    wx.switchTab({ url: '/pages/advisor/index' })
+  },
+
   goProducts() {
     wx.switchTab({ url: '/pages/products/index' })
   },

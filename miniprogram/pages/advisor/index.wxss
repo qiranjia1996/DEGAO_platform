@@ -56,3 +56,50 @@
 .composer-input { flex: 1; height: 80rpx; background: var(--c-paper); border: 1rpx solid var(--c-line); border-radius: 6rpx; padding: 0 26rpx; font-size: 26rpx; }
 .composer-send { margin-left: 16rpx; height: 80rpx; padding: 0 32rpx; border-radius: 6rpx; background: #C9CFCB; color: #fff; display: flex; align-items: center; font-size: 26rpx; }
 .composer-send.on { background: var(--c-green); }
+
+/* 模式切换 */
+.seg { display: flex; margin: 28rpx 32rpx 0; border: 1rpx solid var(--c-line); border-radius: 6rpx; overflow: hidden; background: #fff; }
+.seg-i { flex: 1; text-align: center; height: 76rpx; line-height: 76rpx; font-size: 27rpx; color: var(--c-sub); letter-spacing: 2rpx; }
+.seg-i + .seg-i { border-left: 1rpx solid var(--c-line); }
+.seg-on { background: var(--c-green); color: #fff; }
+
+/* 问答选品 */
+.tree { padding: 0 32rpx; }
+.crumbs { display: flex; align-items: center; justify-content: space-between; margin-top: 28rpx; }
+.crumb-path { flex: 1; min-width: 0; font-size: 23rpx; color: var(--c-green); }
+.crumb + .crumb::before { content: '›'; color: var(--c-muted); margin: 0 10rpx; }
+.crumb-actions { flex-shrink: 0; margin-left: 16rpx; }
+.crumb-act { font-size: 23rpx; color: var(--c-sub); margin-left: 24rpx; }
+
+.step { margin-top: 32rpx; }
+.step-no { font-size: 24rpx; color: var(--c-red); letter-spacing: 2rpx; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.step-total { color: var(--c-muted); }
+.step-q { font-family: var(--serif); font-size: 40rpx; font-weight: 700; margin-top: 10rpx; letter-spacing: 2rpx; line-height: 1.4; }
+.opts { margin-top: 28rpx; background: #fff; border: 1rpx solid var(--c-line); border-radius: 8rpx; overflow: hidden; }
+.opt { display: flex; align-items: center; padding: 30rpx 26rpx; border-bottom: 1rpx solid var(--c-line-2); }
+.opt:last-child { border-bottom: none; }
+.opt-icon { width: 84rpx; height: 84rpx; border-radius: 50%; border: 1rpx solid var(--c-green); display: flex; align-items: center; justify-content: center; margin-right: 24rpx; flex-shrink: 0; }
+.opt-icon image { width: 58rpx; height: 58rpx; }
+.opt-main { flex: 1; min-width: 0; }
+.opt-label { font-size: 30rpx; font-weight: 500; }
+.opt-sub { font-size: 23rpx; color: var(--c-muted); margin-top: 4rpx; }
+
+/* 推荐结果 */
+.res { margin-top: 32rpx; }
+.res-head { margin-bottom: 20rpx; }
+.res-kicker { font-family: var(--brush); font-size: 34rpx; color: var(--c-red); letter-spacing: 4rpx; }
+.res-title { font-family: var(--serif); font-size: 42rpx; font-weight: 700; margin-top: 6rpx; letter-spacing: 2rpx; }
+.res-reason { font-size: 27rpx; line-height: 1.95; color: #2F3531; background: #fff; border: 1rpx solid var(--c-line); border-left: 6rpx solid var(--c-red); border-radius: 0 8rpx 8rpx 0; padding: 26rpx 28rpx; }
+.res-actions { margin-top: 32rpx; }
+.res-links { display: flex; justify-content: space-between; margin-top: 22rpx; }
+.res-link { font-size: 25rpx; color: var(--c-green); }
+
+.refs { margin-top: 44rpx; background: #fff; border: 1rpx solid var(--c-line); border-radius: 8rpx; padding: 28rpx 26rpx 22rpx; }
+.refs-title { font-family: var(--brush); font-size: 36rpx; letter-spacing: 4rpx; padding-bottom: 14rpx; border-bottom: 1rpx solid var(--c-line-2); }
+.ref { display: flex; padding: 20rpx 0; border-bottom: 1rpx solid var(--c-line-2); }
+.ref-no { font-size: 22rpx; color: var(--c-red); width: 56rpx; flex-shrink: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; padding-top: 2rpx; }
+.ref-main { flex: 1; min-width: 0; }
+.ref-finding { font-size: 25rpx; line-height: 1.65; color: var(--c-ink); }
+.ref-meta { font-size: 21rpx; color: var(--c-muted); margin-top: 6rpx; text-decoration: underline; text-decoration-color: #D5D9D6; }
+.refs-note { font-size: 20rpx; color: var(--c-muted); line-height: 1.6; margin-top: 18rpx; }
+.bottom-gap { height: 60rpx; }
