@@ -1,6 +1,5 @@
 <view class="profile">
-  <view class="profile-ring"></view>
-  <view class="avatar">DG</view>
+  <image class="avatar" src="/images/brand/logo-mark.png" mode="aspectFit" />
   <view class="profile-main">
     <view class="hello">{{t.mine.hello}}</view>
     <view class="hello-sub">{{t.mine.sub}}</view>

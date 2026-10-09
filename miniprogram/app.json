@@ -12,23 +12,48 @@
     "pages/orders/index"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#0D3B2E",
-    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "德高农牧",
-    "backgroundColor": "#F5F3EE",
+    "backgroundColor": "#F6F5F1",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "color": "#8A918D",
-    "selectedColor": "#0D3B2E",
+    "color": "#8C918E",
+    "selectedColor": "#0A5A3A",
     "backgroundColor": "#FFFFFF",
-    "borderStyle": "white",
+    "borderStyle": "black",
     "list": [
-      { "pagePath": "pages/home/index", "text": "首页", "iconPath": "images/tab/home.png", "selectedIconPath": "images/tab/home-on.png" },
-      { "pagePath": "pages/products/index", "text": "产品", "iconPath": "images/tab/grid.png", "selectedIconPath": "images/tab/grid-on.png" },
-      { "pagePath": "pages/advisor/index", "text": "AI 选品", "iconPath": "images/tab/spark.png", "selectedIconPath": "images/tab/spark-on.png" },
-      { "pagePath": "pages/cart/index", "text": "采购单", "iconPath": "images/tab/cart.png", "selectedIconPath": "images/tab/cart-on.png" },
-      { "pagePath": "pages/mine/index", "text": "我的", "iconPath": "images/tab/user.png", "selectedIconPath": "images/tab/user-on.png" }
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "images/tab/home.png",
+        "selectedIconPath": "images/tab/home-on.png"
+      },
+      {
+        "pagePath": "pages/products/index",
+        "text": "产品",
+        "iconPath": "images/tab/grid.png",
+        "selectedIconPath": "images/tab/grid-on.png"
+      },
+      {
+        "pagePath": "pages/advisor/index",
+        "text": "AI 选品",
+        "iconPath": "images/tab/spark.png",
+        "selectedIconPath": "images/tab/spark-on.png"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "text": "采购单",
+        "iconPath": "images/tab/cart.png",
+        "selectedIconPath": "images/tab/cart-on.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "images/tab/user.png",
+        "selectedIconPath": "images/tab/user-on.png"
+      }
     ]
   },
   "usingComponents": {

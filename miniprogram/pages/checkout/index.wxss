@@ -1,15 +1,15 @@
-.box { margin: 24rpx 24rpx 0; }
-.box-title { font-size: 28rpx; font-weight: 700; margin-bottom: 12rpx; }
-.item { display: flex; align-items: center; padding: 18rpx 0; border-bottom: 1rpx solid #EFECE5; }
+.box { margin: 20rpx 32rpx 0; }
+.box-title { font-family: var(--brush); font-weight: normal; font-size: 34rpx; margin-bottom: 12rpx; letter-spacing: 2rpx; }
+.item { display: flex; align-items: center; padding: 20rpx 0; border-bottom: 1rpx solid var(--c-line-2); }
 .item-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-.item-title { font-size: 26rpx; font-weight: 600; }
-.item-sub { font-size: 22rpx; color: #9AA19D; }
-.item-price { font-size: 26rpx; font-weight: 600; }
-.sum { display: flex; justify-content: space-between; align-items: baseline; padding-top: 20rpx; font-size: 25rpx; color: #66706B; }
-.sum-v { font-size: 36rpx; }
+.item-title { font-size: 26rpx; font-weight: 500; }
+.item-sub { font-size: 22rpx; color: var(--c-muted); }
+.item-price { font-size: 26rpx; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.sum { display: flex; justify-content: space-between; align-items: baseline; padding-top: 22rpx; font-size: 25rpx; color: var(--c-sub); }
+.sum-v { font-size: 36rpx; font-weight: 500; }
 .pay { display: flex; justify-content: space-between; font-size: 25rpx; }
-.pay-k { color: #66706B; }
-.pay-v { color: #17201C; }
+.pay-k { color: var(--c-sub); }
+.pay-v { color: var(--c-ink); }
 .total { flex: 1; display: flex; align-items: baseline; }
-.total-l { font-size: 25rpx; color: #66706B; }
-.total-v { font-size: 40rpx; margin-left: 10rpx; }
+.total-l { font-size: 25rpx; color: var(--c-sub); }
+.total-v { font-size: 40rpx; margin-left: 10rpx; font-weight: 500; }

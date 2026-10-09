@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
-<meta name="theme-color" content="#0D3B2E">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="robots" content="noindex">
 <title>__TITLE__</title>
 <style>
@@ -15,39 +15,40 @@
   --tab-h: calc(50px + env(safe-area-inset-bottom));
 }
 * { -webkit-tap-highlight-color: transparent; }
-html, body { margin: 0; height: 100%; overflow: hidden; background: #E9E6DE; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #ECEBE6; }
 body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif; }
 
 #app {
   position: relative; width: var(--frame-w); height: 100%; height: 100dvh;
-  margin: 0 auto; overflow: hidden; background: #F5F3EE;
+  margin: 0 auto; overflow: hidden; background: var(--page-bg, #fff);
 }
 @media (min-width: 520px) and (min-height: 700px) {
   body { display: flex; align-items: center; justify-content: center; }
-  #app { height: min(100dvh - 48px, 900px); border-radius: 28px; box-shadow: 0 24px 80px rgba(13, 59, 46, 0.18); }
+  #app { height: min(100dvh - 48px, 900px); border-radius: 28px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 30px 80px rgba(0, 0, 0, 0.10); }
 }
 
 /* 导航栏 */
 #nav {
   position: absolute; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 20;
-  background: #0D3B2E; color: #fff; display: flex; align-items: center; justify-content: center;
+  background: var(--nav-bg); color: var(--nav-fg); display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
-#nav-title { font-size: 17px; font-weight: 600; max-width: 62%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#nav-title { font-size: 17px; font-weight: 500; max-width: 62%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #nav-back {
   position: absolute; left: 0; top: 0; width: 48px; height: var(--nav-h); display: none;
   align-items: center; justify-content: center; cursor: pointer;
 }
 #nav-back.show { display: flex; }
 #nav-back::before {
-  content: ''; width: 11px; height: 11px; border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+  content: ''; width: 11px; height: 11px; border-left: 1.5px solid var(--nav-fg); border-bottom: 1.5px solid var(--nav-fg);
   transform: rotate(45deg); margin-left: 4px;
 }
 #nav-back.home::before {
-  width: 14px; height: 12px; border: 2px solid #fff; border-top: none; transform: none; margin: 6px 0 0;
+  width: 14px; height: 12px; border: 1.5px solid var(--nav-fg); border-top: none; transform: none; margin: 6px 0 0;
   border-radius: 0 0 2px 2px;
 }
 #nav-back.home::after {
-  content: ''; position: absolute; width: 13px; height: 13px; border-left: 2px solid #fff; border-top: 2px solid #fff;
+  content: ''; position: absolute; width: 13px; height: 13px; border-left: 1.5px solid var(--nav-fg); border-top: 1.5px solid var(--nav-fg);
   transform: rotate(45deg); top: 13px;
 }
 .no-nav #nav { display: none; }
@@ -66,8 +67,8 @@ body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft Y
 /* 底部标签栏 */
 #tabbar {
   position: absolute; left: 0; right: 0; bottom: 0; height: var(--tab-h); z-index: 20;
-  background: #fff; display: flex; padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
+  background: var(--tab-bg); display: flex; padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -1px 0 var(--tab-border);
 }
 .no-tab #tabbar { display: none; }
 .tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; color: var(--tab-color); }

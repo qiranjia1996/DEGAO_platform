@@ -1,23 +1,26 @@
-/* 德高农牧 · 设计系统 */
-page {
-  --c-primary: #0D3B2E;
-  --c-primary-2: #17533F;
-  --c-primary-3: #2C7A5B;
-  --c-gold: #B8915A;
-  --c-gold-soft: #F3EADB;
-  --c-bg: #F5F3EE;
-  --c-card: #FFFFFF;
-  --c-text: #17201C;
-  --c-sub: #66706B;
-  --c-muted: #9AA19D;
-  --c-line: #E8E4DB;
-  --c-mint: #E7F0EB;
-  --radius: 24rpx;
-  --radius-sm: 14rpx;
-  --shadow: 0 8rpx 32rpx rgba(13, 59, 46, 0.06);
+/* 德高农牧 · 设计系统
+   配色取自德高包装：品牌绿 + 德高红（只作印章式点缀）+ 纸白。
+   原则：不用渐变和阴影，用细线与留白分隔；小圆角；宋体标题，重点标题用书法字。 */
+@import "styles/brush-font.wxss";
 
-  background: var(--c-bg);
-  color: var(--c-text);
+page {
+  --c-green: #0A5A3A;
+  --c-green-deep: #063F28;
+  --c-green-soft: #EDF2EE;
+  --c-red: #B3212A;
+  --c-paper: #F6F5F1;
+  --c-card: #FFFFFF;
+  --c-ink: #1F2421;
+  --c-sub: #6B716D;
+  --c-muted: #9EA39F;
+  --c-line: #E3E1DB;
+  --c-line-2: #EFEDE8;
+  --radius: 8rpx;
+  --brush: "DG Brush", "Songti SC", "Noto Serif SC", STSong, serif;
+  --serif: "Songti SC", "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", STSong, SimSun, serif;
+
+  background: var(--c-paper);
+  color: var(--c-ink);
   font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
   font-size: 28rpx;
   line-height: 1.6;
@@ -26,52 +29,68 @@ page {
 view, text, input, textarea, button { box-sizing: border-box; }
 
 .container { padding: 0 32rpx; }
+.serif { font-family: var(--serif); }
+.brush { font-family: var(--brush); font-weight: normal; }
+.num { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-variant-numeric: tabular-nums; }
 
-/* 区块标题 */
-.section { margin-top: 56rpx; }
+/* 区块标题：宋体标题 + 英文小字 */
+.section { margin-top: 64rpx; }
 .section-head {
   display: flex; align-items: flex-end; justify-content: space-between;
   padding: 0 32rpx; margin-bottom: 24rpx;
 }
-.section-title { font-size: 38rpx; font-weight: 700; letter-spacing: 0.5rpx; color: var(--c-text); }
-.section-sub { font-size: 24rpx; color: var(--c-sub); margin-top: 6rpx; }
-.section-link { font-size: 24rpx; color: var(--c-primary-3); white-space: nowrap; }
+.section-title { font-family: var(--brush); font-size: 42rpx; font-weight: normal; letter-spacing: 4rpx; color: var(--c-ink); line-height: 1.3; }
+.section-sub { font-size: 22rpx; color: var(--c-muted); margin-top: 4rpx; letter-spacing: 1rpx; }
+.section-link { font-size: 24rpx; color: var(--c-sub); white-space: nowrap; }
 .eyebrow {
-  font-size: 20rpx; letter-spacing: 4rpx; text-transform: uppercase;
-  color: var(--c-gold); font-weight: 600;
+  font-size: 20rpx; letter-spacing: 6rpx; text-transform: uppercase;
+  color: var(--c-green); font-weight: 500;
 }
+
+/* 两边带细线的小标题：—— MIXED FEED ADDITIVE —— */
+.label-line {
+  display: flex; align-items: center; font-size: 20rpx; letter-spacing: 6rpx;
+  color: var(--c-sub); text-transform: uppercase;
+}
+.label-line::before, .label-line::after { content: ''; flex: 1; height: 1rpx; background: var(--c-line); }
+.label-line::before { margin-right: 20rpx; }
+.label-line::after { margin-left: 20rpx; }
+
+/* 红色竖条（取自包装上公司名旁的竖条） */
+.red-bar { border-left: 6rpx solid var(--c-red); padding-left: 22rpx; }
 
 /* 卡片 */
 .card {
   background: var(--c-card); border-radius: var(--radius);
-  box-shadow: var(--shadow); padding: 32rpx;
+  border: 1rpx solid var(--c-line); padding: 32rpx;
 }
 
-/* 按钮 */
+/* 按钮：小圆角，不用胶囊 */
 .btn {
   display: flex; align-items: center; justify-content: center;
-  height: 88rpx; border-radius: 44rpx; padding: 0 40rpx;
-  font-size: 28rpx; font-weight: 600; line-height: 1;
+  height: 88rpx; border-radius: 6rpx; padding: 0 40rpx;
+  font-size: 28rpx; font-weight: 500; line-height: 1; letter-spacing: 2rpx;
 }
-.btn-primary { background: var(--c-primary); color: #fff; }
-.btn-gold { background: var(--c-gold); color: #fff; }
-.btn-ghost { background: transparent; color: var(--c-primary); border: 2rpx solid var(--c-primary); }
-.btn-light { background: rgba(255,255,255,0.14); color: #fff; border: 2rpx solid rgba(255,255,255,0.35); }
-.btn-hover { opacity: 0.85; }
+.btn-primary { background: var(--c-green); color: #fff; }
+.btn-gold { background: var(--c-green); color: #fff; }
+.btn-ghost { background: #fff; color: var(--c-green); border: 1rpx solid var(--c-green); }
+.btn-light { background: #fff; color: var(--c-ink); border: 1rpx solid var(--c-line); }
+.btn-hover { opacity: 0.75; }
+.row-hover { background: var(--c-paper); }
 
 /* 标签 */
 .tag {
-  display: inline-flex; align-items: center; height: 44rpx; padding: 0 18rpx;
-  border-radius: 22rpx; font-size: 22rpx; background: var(--c-mint); color: var(--c-primary-2);
-  margin-right: 12rpx; margin-bottom: 12rpx;
+  display: inline-flex; align-items: center; height: 44rpx; padding: 0 16rpx;
+  border-radius: 4rpx; font-size: 22rpx; background: transparent; color: var(--c-green);
+  border: 1rpx solid #C6D6CC; margin-right: 12rpx; margin-bottom: 12rpx;
 }
-.tag-gold { background: var(--c-gold-soft); color: #8A6A3A; }
+.tag-gold { color: var(--c-red); border-color: #E3B9BB; }
 
-.price { color: var(--c-primary); font-weight: 700; }
-.price-unit { font-size: 22rpx; color: var(--c-sub); font-weight: 400; }
+.price { color: var(--c-green); font-weight: 600; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.price-unit { font-size: 22rpx; color: var(--c-muted); font-weight: 400; }
 
 .demo-note {
-  text-align: center; font-size: 20rpx; color: var(--c-muted); padding: 32rpx 32rpx 48rpx;
+  text-align: center; font-size: 20rpx; color: var(--c-muted); padding: 40rpx 32rpx 56rpx; letter-spacing: 1rpx;
 }
 
 .divider { height: 1rpx; background: var(--c-line); margin: 28rpx 0; }
@@ -79,21 +98,26 @@ view, text, input, textarea, button { box-sizing: border-box; }
 /* 底部操作栏 */
 .bottom-bar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
-  background: rgba(255,255,255,0.96); border-top: 1rpx solid var(--c-line);
-  padding: 20rpx 32rpx calc(20rpx + env(safe-area-inset-bottom));
+  background: #fff; border-top: 1rpx solid var(--c-line);
+  padding: 18rpx 32rpx calc(18rpx + env(safe-area-inset-bottom));
   display: flex; align-items: center;
 }
 .bottom-spacer { height: calc(150rpx + env(safe-area-inset-bottom)); }
 
 /* 表单 */
-.field { padding: 24rpx 0; border-bottom: 1rpx solid var(--c-line); }
+.field { padding: 26rpx 0; border-bottom: 1rpx solid var(--c-line-2); }
 .field:last-child { border-bottom: none; }
 .field-label { font-size: 24rpx; color: var(--c-sub); margin-bottom: 10rpx; }
-.field-input { font-size: 30rpx; color: var(--c-text); height: 56rpx; width: 100%; }
+.field-input { font-size: 30rpx; color: var(--c-ink); height: 56rpx; width: 100%; }
 .field-textarea { font-size: 28rpx; width: 100%; height: 160rpx; line-height: 1.5; }
-.placeholder { color: #B4BAB6; }
+.placeholder { color: #B7BBB8; }
 
 /* 列表行 */
 .row { display: flex; align-items: center; }
 .row-between { display: flex; align-items: center; justify-content: space-between; }
-.chev { width: 14rpx; height: 14rpx; border-top: 3rpx solid var(--c-muted); border-right: 3rpx solid var(--c-muted); transform: rotate(45deg); margin-left: 12rpx; }
+.chev { width: 12rpx; height: 12rpx; border-top: 2rpx solid var(--c-muted); border-right: 2rpx solid var(--c-muted); transform: rotate(45deg); margin-left: 12rpx; flex-shrink: 0; }
+
+/* 数量步进器（产品详情、采购单共用） */
+.stepper { display: flex; align-items: center; border: 1rpx solid var(--c-line); border-radius: 6rpx; height: 64rpx; }
+.st-btn { width: 64rpx; height: 64rpx; display: flex; align-items: center; justify-content: center; font-size: 32rpx; color: var(--c-ink); }
+.st-n { min-width: 64rpx; text-align: center; font-size: 28rpx; border-left: 1rpx solid var(--c-line); border-right: 1rpx solid var(--c-line); line-height: 64rpx; }

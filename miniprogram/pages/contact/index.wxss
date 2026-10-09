@@ -1,16 +1,15 @@
-.hotline { position: relative; overflow: hidden; margin: 24rpx; border-radius: 28rpx; padding: 48rpx 40rpx; color: #fff; background: linear-gradient(150deg, #0A2F24, #17533F); }
-.hl-ring { position: absolute; width: 380rpx; height: 380rpx; border-radius: 50%; border: 2rpx solid rgba(212,177,122,0.3); right: -120rpx; top: -140rpx; }
-.hl-num { font-size: 60rpx; font-weight: 700; letter-spacing: 2rpx; font-family: Georgia, serif; margin-top: 12rpx; }
-.hl-name { font-size: 23rpx; opacity: 0.7; margin-top: 6rpx; }
-.hl-btn { width: 220rpx; height: 72rpx; margin-top: 32rpx; font-size: 26rpx; }
+.hotline { background: #fff; padding: 48rpx 32rpx; border-bottom: 1rpx solid var(--c-line); }
+.hl-num { font-size: 60rpx; font-weight: 300; letter-spacing: 2rpx; color: var(--c-green); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin-top: 16rpx; }
+.hl-name { font-size: 24rpx; color: var(--c-sub); margin-top: 8rpx; padding-left: 22rpx; border-left: 6rpx solid var(--c-red); line-height: 1.4; }
+.hl-btn { width: 240rpx; height: 76rpx; margin-top: 36rpx; font-size: 26rpx; }
 
-.info { margin: 0 24rpx; padding: 8rpx 32rpx; }
-.info-row { display: flex; align-items: flex-start; padding: 26rpx 0; border-bottom: 1rpx solid #EFECE5; }
+.info { margin: 20rpx 32rpx 0; padding: 4rpx 28rpx; }
+.info-row { display: flex; align-items: flex-start; padding: 26rpx 0; border-bottom: 1rpx solid var(--c-line-2); }
 .info-row:last-child { border-bottom: none; }
-.info-k { width: 110rpx; font-size: 24rpx; color: #9AA19D; flex-shrink: 0; padding-top: 2rpx; }
-.info-v { flex: 1; font-size: 27rpx; line-height: 1.5; word-break: break-all; }
-.info-copy { font-size: 23rpx; color: #2C7A5B; margin-left: 16rpx; padding-top: 2rpx; }
+.info-k { width: 120rpx; font-size: 24rpx; color: var(--c-muted); flex-shrink: 0; padding-top: 2rpx; }
+.info-v { flex: 1; font-size: 27rpx; line-height: 1.5; word-break: break-word; }
+.info-copy { font-size: 23rpx; color: var(--c-green); margin-left: 16rpx; padding-top: 2rpx; }
 
-.form { margin: 24rpx 24rpx 0; }
-.form-title { font-size: 30rpx; font-weight: 700; margin-bottom: 4rpx; }
+.form { margin: 20rpx 32rpx 0; }
+.form-title { font-family: var(--brush); font-weight: normal; font-size: 36rpx; margin-bottom: 4rpx; letter-spacing: 2rpx; }
 .form-btn { margin-top: 28rpx; }

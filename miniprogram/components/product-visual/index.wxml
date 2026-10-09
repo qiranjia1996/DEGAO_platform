@@ -1,15 +1,28 @@
-<view class="pv pv-{{size}} cat-{{product.cat}}">
-  <view class="ring ring-a"></view>
-  <view class="ring ring-b"></view>
-  <view class="pv-head">
-    <text class="pv-brand">DEGAO</text>
-    <text class="pv-mark">{{product.mark}}</text>
+<!-- 迷你德高包装袋：顶部绿带、D 字标、宋体品名、含量、底部绿带加红色竖条 -->
+<view class="bag bag-{{size}}">
+  <view class="bag-band-top"></view>
+  <view class="bag-dots"></view>
+  <view class="bag-head">
+    <image class="bag-logo" src="/images/brand/logo-mark.png" mode="aspectFit" />
+    <view class="bag-brand">
+      <text>DEGAO</text>
+      <text>NONGMU</text>
+    </view>
   </view>
-  <view class="pv-main">
-    <text class="pv-big {{product.pct ? '' : 'pv-big-mark'}}">{{product.pct || product.mark}}</text>
+  <view class="bag-body">
+    <view class="bag-name">{{product.name}}</view>
+    <view class="bag-big {{product.pct ? '' : 'bag-big-mark'}}">{{product.pct || product.mark}}</view>
+    <view class="bag-formula">{{product.formula}}</view>
+    <view wx:if="{{size === 'lg'}}" class="bag-species">
+      <view class="bag-sp" wx:for="{{product.species}}" wx:key="id">
+        <image class="bag-sp-icon" src="/images/species/{{item.id}}.png" mode="aspectFit" />
+        <text>{{item.name}}</text>
+      </view>
+    </view>
   </view>
-  <view class="pv-foot">
-    <text class="pv-formula">{{product.formula}}</text>
-    <text class="pv-form">{{product.form}}</text>
+  <view class="bag-band-bottom">
+    <view class="bag-redbar"></view>
+    <text class="bag-form">{{product.form}}</text>
+    <text class="bag-code">{{product.id}}</text>
   </view>
 </view>

@@ -30,6 +30,13 @@
 - 本地打包：`node web/build.js`，然后用浏览器打开 `web/dist/index.html`。
 - 网页版的采购单和订单保存在浏览器本地，同样只用于演示。
 
+## 视觉素材
+
+配色、Logo 和产品图风格取自德高新包装。素材源文件在 `design/`，改完后重新生成：
+
+- `node design/render.js`：把 `design/brand/`、`design/icons/` 里的 SVG（Logo、标签栏图标、动物图标）渲染成 `miniprogram/images/` 下的 PNG（需要本机装有 Chrome）
+- `node design/brush-font.js`：重新生成书法标题字体 `miniprogram/styles/brush-font.wxss`。字体是马善政毛笔楷书（开源，SIL OFL），只保留标题用到的字。**改了标题文案后要重新运行**，否则新加的字会显示成宋体（需要 python3 + fonttools）
+
 ## AI 选品
 
 - 默认使用**本地智能匹配**（不联网也能用，适合演示）。

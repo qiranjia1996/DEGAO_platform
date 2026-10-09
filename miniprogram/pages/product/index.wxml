@@ -1,4 +1,4 @@
-<product-visual product="{{p}}" size="lg" />
+<view class="visual"><product-visual product="{{p}}" size="lg" /></view>
 
 <view class="head">
   <view class="head-cat">{{p.catName}} · {{p.id}}</view>

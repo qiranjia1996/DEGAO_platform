@@ -36,7 +36,10 @@ files.forEach(f => {
 
 // ---------- 样式 ----------
 function rpx(css) {
-  return css.replace(/(-?\d*\.?\d+)rpx/g, (_, n) => `calc(var(--rpx) * ${n})`)
+  // 跳过 url(...) 里的内容（base64 字体里可能碰巧出现 "12rpx" 这样的字符）
+  return css.split(/(url\([^)]*\))/).map((part, i) =>
+    i % 2 ? part : part.replace(/(-?\d*\.?\d+)rpx/g, (_, n) => `calc(var(--rpx) * ${n})`)
+  ).join('')
 }
 const TAG = { view: 'wx-view', text: 'wx-text', 'scroll-view': 'wx-scroll-view', button: 'wx-button', image: 'img', page: '.wx-page' }
 function mapSelector(sel, scope) {
@@ -69,12 +72,16 @@ function scopeCss(css, scope) {
   return out
 }
 
-let css = scopeCss(read(path.join(ROOT, 'app.wxss')), '')
-const wxss = files.filter(f => f.endsWith('.wxss') && rel(f) !== 'app.wxss')
+// 展开 WXSS 的 @import（路径相对于当前文件）
+function readWxss(f) {
+  return read(f).replace(/@import\s+["']([^"']+)["'];?/g, (_, p) => readWxss(path.resolve(path.dirname(f), p)))
+}
+let css = scopeCss(readWxss(path.join(ROOT, 'app.wxss')), '')
+const wxss = files.filter(f => f.endsWith('.wxss') && rel(f) !== 'app.wxss' && !rel(f).startsWith('styles/'))
 // 页面样式在前、组件样式在后，组件内部同名类名以组件为准
 wxss
   .filter(f => rel(f).startsWith('pages/'))
-  .forEach(f => (css += scopeCss(read(f), '.P-' + rel(f).slice(0, -5).replace(/\//g, '-'))))
+  .forEach(f => (css += scopeCss(readWxss(f), '.P-' + rel(f).slice(0, -5).replace(/\//g, '-'))))
 const compTags = {}
 Object.entries(app.usingComponents || {}).forEach(([tag, p]) => (compTags[p.replace(/^\//, '')] = tag))
 Object.values(configs).forEach(c =>
@@ -84,7 +91,7 @@ wxss
   .filter(f => !rel(f).startsWith('pages/'))
   .forEach(f => {
     const tag = compTags[rel(f).slice(0, -5)]
-    if (tag) css += scopeCss(read(f), tag)
+    if (tag) css += scopeCss(readWxss(f), tag)
   })
 css = rpx(css)
 
@@ -113,6 +120,9 @@ const html = shell
   .replace('/*__RUNTIME__*/', () => safe(read(path.join(__dirname, 'runtime.js'))))
   .replace('__TITLE__', app.window.navigationBarTitleText || '')
 
+fs.rmSync(OUT, { recursive: true, force: true })
 fs.mkdirSync(OUT, { recursive: true })
 fs.writeFileSync(path.join(OUT, 'index.html'), html)
+// 页面里 <image> 引用的图片原样复制
+fs.cpSync(path.join(ROOT, 'images'), path.join(OUT, 'images'), { recursive: true })
 console.log(`web/dist/index.html  ${(html.length / 1024).toFixed(0)} KB`)

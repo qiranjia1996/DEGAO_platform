@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 100">
+  <path fill="#0A5A3A" d="M7 9 H52 C77 9 94 27 94 50 C94 73 77 91 52 91 H7 V73 H50 C64 73 73 63 73 50 C73 37 64 27 50 27 H24 C15 27 8.5 20 7 9 Z"/>
+  <path fill="#0A5A3A" d="M7 68 C7.5 50 19 37.5 39 34 C38.5 53 27 65.5 7 68 Z"/>
+  <g fill="#0A5A3A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="500" font-size="33" letter-spacing="3.5">
+    <text x="118" y="43">DEGAO</text>
+    <text x="118" y="86">NONGMU</text>
+  </g>
+</svg>

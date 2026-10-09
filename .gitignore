@@ -12,3 +12,7 @@ build/
 *.log
 .Rhistory
 project.private.config.json
+
+# 未公开的包装设计稿
+design/packaging.jpg
+design/fonts/

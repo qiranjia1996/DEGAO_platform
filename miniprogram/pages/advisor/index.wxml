@@ -1,19 +1,21 @@
 <view class="intro">
-  <view class="intro-ring"></view>
+  <view class="intro-mol"></view>
   <view class="row-between">
-    <text class="eyebrow">DEGAO · AI ADVISOR</text>
+    <text class="eyebrow">DEGAO · ADVISOR</text>
     <text class="mode">{{online ? t.advisor.online : t.advisor.offline}}</text>
   </view>
-  <view class="intro-title">{{t.advisor.title}}</view>
+  <view class="intro-title red-bar">{{t.advisor.title}}</view>
   <view class="intro-sub">{{t.advisor.sub}}</view>
 </view>
 
 <view class="examples" wx:if="{{!messages.length}}">
   <view class="ex-label">{{t.advisor.tryAsk}}</view>
-  <view class="ex" wx:for="{{t.advisor.examples}}" wx:key="*this" data-q="{{item}}" bindtap="useExample" hover-class="btn-hover">
-    <text class="ex-q">“</text>
-    <text class="ex-text">{{item}}</text>
-    <view class="chev"></view>
+  <view class="ex-list">
+    <view class="ex" wx:for="{{t.advisor.examples}}" wx:key="*this" data-q="{{item}}" bindtap="useExample" hover-class="btn-hover">
+      <text class="ex-q">0{{index + 1}}</text>
+      <text class="ex-text">{{item}}</text>
+      <view class="chev"></view>
+    </view>
   </view>
 </view>
 
@@ -23,7 +25,7 @@
 
     <view wx:else class="msg-ai">
       <view class="ai-head">
-        <view class="ai-avatar">DG</view>
+        <image class="ai-avatar" src="/images/brand/logo-mark.png" mode="aspectFit" />
         <text class="ai-name">{{t.advisor.recommended}}</text>
         <text class="ai-mode">{{m.res.mode === 'online' ? t.advisor.online : t.advisor.offline}}</text>
       </view>
@@ -32,7 +34,7 @@
 
       <view class="rec" wx:for="{{m.res.items}}" wx:key="index" wx:for-item="it">
         <view class="rec-top" data-id="{{it.product.id}}" bindtap="openProduct">
-          <view class="rec-no">{{index + 1}}</view>
+          <view class="rec-no">0{{index + 1}}</view>
           <view class="rec-visual"><product-visual product="{{it.product}}" size="sm" /></view>
           <view class="rec-main">
             <view class="rec-cat">{{it.product.catName}}</view>

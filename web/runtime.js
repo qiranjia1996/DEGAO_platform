@@ -268,6 +268,16 @@
     if ((el.getAttribute('style') || '') !== v.style) el.setAttribute('style', v.style)
     if (v.id) el.id = v.id
     else if (el.id) el.removeAttribute('id')
+    if (v.tag === 'image') {
+      // 小程序里的绝对路径 /images/x.png 在网页里改成相对路径，适配 GitHub Pages 子目录
+      const src = String(v.props.src || '').replace(/^\//, '')
+      if (el.getAttribute('src') !== src) el.setAttribute('src', src)
+      const fit = { aspectFit: 'contain', aspectFill: 'cover', scaleToFill: 'fill' }[v.props.mode || 'scaleToFill']
+      if (fit) el.style.objectFit = fit
+      if (v.props.mode === 'widthFix') el.style.height = 'auto'
+      el.alt = ''
+      return
+    }
     if (v.tag === 'input' || v.tag === 'textarea') {
       const val = v.props.value == null ? '' : String(v.props.value)
       if (el.value !== val) el.value = val
@@ -332,6 +342,9 @@
     const cfg = Object.assign({}, app.window, B.configs[route] || {})
     page.__title = cfg.navigationBarTitleText || ''
     page.__custom = cfg.navigationStyle === 'custom'
+    page.__navBg = cfg.navigationBarBackgroundColor || '#000000'
+    page.__navFg = cfg.navigationBarTextStyle === 'black' ? '#000000' : '#ffffff'
+    page.__bg = cfg.backgroundColor || '#ffffff'
     const comps = compMap(route)
     Object.values(comps).forEach(c => {
       if (!compDefs[c]) register(c)
@@ -401,6 +414,9 @@
     page.__el.style.display = ''
     const isTab = tabRoutes.includes(page.route)
     $app.classList.toggle('no-nav', page.__custom)
+    $app.style.setProperty('--nav-bg', page.__navBg)
+    $app.style.setProperty('--nav-fg', page.__navFg)
+    $app.style.setProperty('--page-bg', page.__bg)
     $app.classList.toggle('no-tab', !isTab)
     $back.classList.toggle('show', stack.length > 1 || !isTab)
     $back.classList.toggle('home', stack.length <= 1 && !isTab)
@@ -496,6 +512,8 @@
   })
   document.documentElement.style.setProperty('--tab-color', app.tabBar.color)
   document.documentElement.style.setProperty('--tab-on', app.tabBar.selectedColor)
+  document.documentElement.style.setProperty('--tab-bg', app.tabBar.backgroundColor || '#ffffff')
+  document.documentElement.style.setProperty('--tab-border', app.tabBar.borderStyle === 'white' ? 'transparent' : 'rgba(0,0,0,0.08)')
 
   // ---------- 事件 ----------
   function evObj(type, el, target, detail) {

@@ -1,5 +1,5 @@
 <view wx:if="{{!lines.length}}" class="empty">
-  <view class="empty-mark">DG</view>
+  <image class="empty-mark" src="/images/brand/logo-mark.png" mode="aspectFit" />
   <view class="empty-t">{{t.cart.empty}}</view>
   <view class="empty-s">{{t.cart.emptySub}}</view>
   <view class="btn btn-primary empty-btn" bindtap="goShop" hover-class="btn-hover">{{t.cart.go}}</view>

@@ -2,7 +2,7 @@
   <view class="success-icon"><view class="tick"></view></view>
   <view class="success-t">{{t.checkout.success}}</view>
   <view class="success-s">{{t.checkout.successSub}}</view>
-  <view class="btn btn-light success-btn" bindtap="home" hover-class="btn-hover">{{t.tabs[0]}}</view>
+  <view class="btn btn-ghost success-btn" bindtap="home" hover-class="btn-hover">{{t.tabs[0]}}</view>
 </view>
 
 <view wx:if="{{!orders.length}}" class="empty">{{t.orders.empty}}</view>

@@ -1,9 +1,8 @@
 <view class="hotline" bindtap="call" hover-class="btn-hover">
-  <view class="hl-ring"></view>
   <text class="eyebrow">{{t.contact.phone}}</text>
   <view class="hl-num">{{c.phone}}</view>
   <view class="hl-name">{{name}}</view>
-  <view class="btn btn-gold hl-btn">{{t.common.call}}</view>
+  <view class="btn btn-primary hl-btn">{{t.common.call}}</view>
 </view>
 
 <view class="card info">

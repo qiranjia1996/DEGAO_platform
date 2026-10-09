@@ -1,9 +1,8 @@
 <view class="banner">
-  <view class="b-ring r1"></view>
-  <view class="b-ring r2"></view>
+  <view class="b-mol"></view>
   <text class="eyebrow">DEGAO · EST. 2019</text>
   <view class="b-name">{{name}}</view>
-  <view class="b-slogan">{{slogan}}</view>
+  <view class="b-slogan red-bar">{{slogan}}</view>
   <view class="b-tag">{{tagline}}</view>
 </view>
 
@@ -44,7 +43,7 @@
 <view class="block">
   <view class="block-title">{{t.about.portfolio}}</view>
   <view class="pf" wx:for="{{portfolio}}" wx:key="id" data-id="{{item.id}}" bindtap="goCat" hover-class="row-hover">
-    <view class="pf-bar cat-{{item.id}}"></view>
+    <text class="pf-no">0{{index + 1}}</text>
     <view class="pf-main">
       <view class="pf-name">{{item.name}}</view>
       <view class="pf-items">
