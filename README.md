@@ -21,6 +21,15 @@
 3. 导入后左侧模拟器即可看到效果。
 4. 手机预览：点工具栏「预览」，用微信扫二维码。
 
+## 网页预览版
+
+不装微信也能看：<https://qiranjia1996.github.io/DEGAO_platform/>（用微信打开链接即可）。
+
+- `web/` 把 `miniprogram/` 原样跑在浏览器里（模拟 Page / Component / wx API），页面和数据与小程序同一份，不用单独维护。
+- 推送到 `main` 后，GitHub Actions 自动打包并发布到 GitHub Pages。
+- 本地打包：`node web/build.js`，然后用浏览器打开 `web/dist/index.html`。
+- 网页版的采购单和订单保存在浏览器本地，同样只用于演示。
+
 ## AI 选品
 
 - 默认使用**本地智能匹配**（不联网也能用，适合演示）。
