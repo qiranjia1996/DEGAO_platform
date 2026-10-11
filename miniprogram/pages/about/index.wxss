@@ -32,4 +32,10 @@
 .pf:last-child { border-bottom: none; }
 .pf-no { font-size: 22rpx; color: var(--c-red); width: 60rpx; flex-shrink: 0; padding-top: 6rpx; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 .pf-main { flex: 1; }
-.pf-name { font-family: var(--serif); font-size: 29rpx; font-weight: 700; margin-bottom: 14rpx; letter-spacing: 2rpx; }
+.pf-name { font-family: var(--serif); font-size: 29rpx; font-weight: 700; letter-spacing: 2rpx; flex: 1; }
+.pf-head { display: flex; align-items: center; margin-bottom: 10rpx; }
+.pf-count { font-size: 22rpx; color: var(--c-muted); }
+.pf-sub { font-size: 22rpx; color: var(--c-muted); margin: -10rpx 0 10rpx; }
+.pf-desc { font-size: 24rpx; color: #3A403C; line-height: 1.7; }
+.pf-series { font-size: 22rpx; color: var(--c-sub); line-height: 1.6; margin: 8rpx 0 14rpx; }
+.pf-tag { color: var(--c-green); border-color: #C6D6CC; }

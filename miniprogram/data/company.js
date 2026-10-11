@@ -1,30 +1,30 @@
-// 公司信息：来自德高官网存档、爱企查/企查查/天眼查公开信息、山东省政府公示文件。
+// 公司信息：来自德高官网存档、爱企查/企查查/天眼查公开信息、山东省政府公示文件；产品数量来自 2026 年 10 月产品目录表。
 
 module.exports = {
   name: { zh: '济南德高农牧科技有限公司', en: 'Jinan Degao Agriculture & Animal Husbandry Technology Co., Ltd.' },
   short: { zh: '德高农牧', en: 'DEGAO' },
   slogan: { zh: '创新材料 · 驱动未来', en: 'Innovative Materials, Driving the Future' },
   tagline: {
-    zh: '专注新型绿色饲料添加剂的研发与生产',
-    en: 'Research & manufacturing of next-generation green feed additives'
+    zh: '19 个系列、35 个规格的饲料添加剂，覆盖猪、禽、反刍和水产',
+    en: '19 product lines and 35 grades of feed additives for swine, poultry, ruminants and aqua'
   },
   about: {
     zh: [
-      '济南德高农牧科技有限公司成立于 2019 年 9 月，位于山东省济南市莱芜高新区，是一家专业从事新型绿色饲料添加剂研发和生产的高新技术企业。',
-      '公司核心团队由畜牧行业的专业人才组成，并与海外留学人员、科研机构及国内高校、科研院所开展广泛的技术合作。我们以科技为依托，以人为本，把提升客户价值作为一切工作的目标。',
-      '公司在莱芜高新区建有年产 5000 吨混合型饲料添加剂生产项目，产品涵盖丁酸类、有机酸、功能性营养、植物提取物、酶制剂及脱霉剂等系列，服务猪、禽、反刍及水产养殖客户。'
+      '济南德高农牧科技有限公司成立于 2019 年 9 月，位于山东省济南市莱芜高新区，是专业研发和生产新型饲料添加剂的国家高新技术企业。德高目前有 19 个产品系列、35 个规格，围绕养殖场最常见的六类问题提供产品：肠道健康与消化、肌肉与生长、抗应激、过瘤胃包被营养、植物源与替抗、霉菌毒素与免疫。',
+      '包被和微囊是德高多数产品的共同工艺。丁酸钠从 98% 原粉到 30% 脂肪包被微囊共 7 个规格，可按动物和饲料类型选择释放部位；胍基乙酸、γ-氨基丁酸、半胱胺都有包被型，蛋氨酸、赖氨酸、氯化胆碱和复合维生素采用包被工艺，帮助营养通过瘤胃、在小肠吸收。',
+      '公司在莱芜高新区建有年产 5000 吨混合型饲料添加剂生产项目，通过 FAMI-QS、ISO 9001、ISO 22000 认证。核心团队由畜牧行业专业人才组成，并与国内高校、科研院所开展技术合作。除成分待确认的复配产品外，每个产品都写明了作用原理和应用场景，并附公开研究文献，方便客户判断它对自己的养殖场有什么用。'
     ],
     en: [
-      'Founded in September 2019 in the Laiwu High-tech Zone of Jinan, Shandong, Jinan Degao is a high-tech enterprise dedicated to the research, development and production of next-generation green feed additives.',
-      'Our team brings deep animal-husbandry expertise and collaborates closely with overseas-trained scientists, research institutes and leading Chinese universities. Grounded in science and people-first values, we measure success by the value we create for customers.',
-      'Our Laiwu facility produces 5,000 tonnes of blended feed additives per year. The portfolio spans butyrates, organic acids, functional nutrients, phytogenics, enzymes and mycotoxin binders for swine, poultry, ruminant and aqua producers.'
+      'Founded in September 2019 in the Laiwu High-tech Zone of Jinan, Shandong, Jinan Degao is a National High-Tech Enterprise developing and manufacturing next-generation feed additives. Our 19 product lines and 35 grades address the six problems farms face most: gut health and digestion, muscle and growth, stress, rumen-protected nutrition, phytogenic and antibiotic-free programs, and mycotoxins and immunity.',
+      'Coating and microencapsulation run through most of our portfolio. Sodium butyrate alone comes in 7 grades, from 98% powder to 30% fat-coated microcapsules, so you can choose where in the gut it is released. Guanidinoacetic acid, GABA and cysteamine all have coated grades, and our methionine, lysine, choline chloride and multivitamin are coated to pass the rumen and be absorbed in the small intestine.',
+      'Our Laiwu facility is designed for 5,000 tonnes of blended feed additives a year and is certified to FAMI-QS, ISO 9001 and ISO 22000. Our team brings deep animal-husbandry expertise and works with Chinese universities and research institutes. Apart from blends whose composition is still being confirmed, every product page explains how it works and where it helps, with published studies, so customers can judge what it will do on their farm.'
     ]
   },
   stats: [
-    { value: '2019', label: { zh: '成立年份', en: 'Founded' } },
+    { value: '19', label: { zh: '产品系列', en: 'Product lines' } },
+    { value: '35', label: { zh: '产品规格', en: 'Grades' } },
     { value: '5000t', label: { zh: '年设计产能', en: 'Annual capacity' } },
-    { value: '14', label: { zh: '产品系列', en: 'Product lines' } },
-    { value: 'A', label: { zh: '山东省饲料企业评级', en: 'Shandong feed rating' } }
+    { value: '2019', label: { zh: '成立年份', en: 'Founded' } }
   ],
   certs: [
     { code: 'FAMI-QS', title: { zh: 'FAMI-QS 认证', en: 'FAMI-QS Certified' }, desc: { zh: '欧洲饲料添加剂和预混合饲料质量体系，2022 年 7 月通过', en: 'European feed additive & premixture quality system, July 2022' } },

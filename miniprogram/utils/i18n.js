@@ -15,13 +15,13 @@ const dict = {
     },
     home: {
       heroKicker: 'DEGAO · 德高农牧',
-      heroTitle: '绿色饲料添加剂\n科技驱动养殖未来',
-      heroSub: '专注新型绿色饲料添加剂研发与生产 · 国家高新技术企业',
+      heroTitle: '肠道 · 肌肉 · 抗应激\n德高饲料添加剂',
+      heroSub: '19 个系列 35 个规格 · 包被缓释工艺 · 国家高新技术企业',
       ctaAdvisor: 'AI 智能选品', ctaProducts: '浏览产品',
       searchHint: '描述您的养殖问题，例如：断奶仔猪腹泻',
       solutions: '按养殖品种选择', solutionsSub: '为不同动物匹配合适的方案',
-      featured: '主推产品', featuredSub: '官网推荐产品',
-      categories: '产品系列',
+      featured: '主推产品', featuredSub: '每个方向的代表产品',
+      categories: '六大产品方向', categoriesSub: '按要解决的问题找产品',
       trust: '资质与认证', trustSub: '质量体系与权威认证',
       aboutTitle: '关于德高', aboutCta: '公司介绍',
       contactTitle: '合作洽谈', contactSub: '欢迎来厂参观、指导、合作、洽购',
@@ -31,9 +31,13 @@ const dict = {
     product: {
       intro: '产品介绍', benefits: '核心功效', specs: '规格参数', species: '适用动物', dosage: '参考添加量',
       spec: '有效含量', form: '剂型', pack: '包装', formula: '分子式 / 类别', code: '产品编号',
-      grades: '可选规格', qty: '采购数量', bags: '袋', note: '添加量为行业参考范围，具体方案请咨询德高技术服务团队。',
+      grades: '可选规格', qty: '采购数量', bags: '袋', note: '添加量来自德高产品目录（每吨饲料用量），具体方案请咨询德高技术服务团队。',
       askAI: '问问 AI 这个产品适合我吗', inquiry: '电话询价',
-      refs: '研究依据'
+      refs: '研究依据',
+      mechanism: '作用原理', uses: '对您的养殖场有什么用', gradeGuide: '如何选择规格', howto: '使用要点', faq: '常见问题',
+      current: '当前', speciesAsk: '适用动物请咨询',
+      usesNote: '方括号中的编号对应下方「研究依据」中的文献。',
+      pending: '本产品为德高复配产品，成分与功效待德高技术部确认，以下为通用介绍。详情请电话咨询。'
     },
     advisor: {
       title: 'AI 选品顾问',
@@ -71,7 +75,7 @@ const dict = {
       orders: '我的订单', cart: '采购单', advisor: 'AI 选品顾问', about: '关于德高', contact: '联系我们',
       language: '语言 / Language', langName: '中文', version: '版本'
     },
-    about: { story: '公司简介', milestones: '发展历程', certs: '资质荣誉', portfolio: '产品体系' },
+    about: { story: '公司简介', milestones: '发展历程', certs: '资质荣誉', portfolio: '六大产品方向', portfolioSub: '点击方向查看全部产品，点击产品查看详情' },
     contact: {
       title: '联系我们', phone: '咨询热线', fax: '传真', email: '邮箱', address: '地址',
       form: '在线留言', name: '您的姓名', tel: '联系电话', msg: '留言内容（想了解的产品、需求等）',
@@ -92,13 +96,13 @@ const dict = {
     },
     home: {
       heroKicker: 'DEGAO · Since 2019',
-      heroTitle: 'Green Feed Additives,\nScience-Driven Farming',
-      heroSub: 'R&D and manufacturing of next-gen feed additives · National High-Tech Enterprise',
+      heroTitle: 'Gut · Muscle · Stress,\nDegao Feed Additives',
+      heroSub: '19 product lines, 35 grades · Coated slow-release technology · National High-Tech Enterprise',
       ctaAdvisor: 'AI Product Finder', ctaProducts: 'Browse Products',
       searchHint: 'Describe your challenge, e.g. piglet diarrhea after weaning',
       solutions: 'Solutions by Species', solutionsSub: 'Programs matched to each animal',
-      featured: 'Featured Products', featuredSub: 'Our flagship formulations',
-      categories: 'Product Lines',
+      featured: 'Featured Products', featuredSub: 'One flagship from each area',
+      categories: 'Six Product Areas', categoriesSub: 'Find products by the problem you need to solve',
       trust: 'Certifications', trustSub: 'Quality systems & recognitions',
       aboutTitle: 'About Degao', aboutCta: 'Our story',
       contactTitle: 'Partner With Us', contactSub: 'Factory visits, technical exchange and orders welcome',
@@ -108,9 +112,13 @@ const dict = {
     product: {
       intro: 'Overview', benefits: 'Key Benefits', specs: 'Specifications', species: 'Target Species', dosage: 'Suggested Inclusion',
       spec: 'Active content', form: 'Form', pack: 'Packaging', formula: 'Formula / Class', code: 'Product code',
-      grades: 'Available grades', qty: 'Quantity', bags: 'bags', note: 'Inclusion rates are industry reference ranges. Please consult Degao technical service for your formulation.',
+      grades: 'Available grades', qty: 'Quantity', bags: 'bags', note: 'Inclusion rates are from the Degao product catalog (per tonne of feed). Please consult Degao technical service for your formulation.',
       askAI: 'Ask AI if this product fits my farm', inquiry: 'Call for quote',
-      refs: 'Research evidence'
+      refs: 'Research evidence',
+      mechanism: 'How It Works', uses: 'What It Does for Your Farm', gradeGuide: 'Choosing a Grade', howto: 'How to Use', faq: 'FAQ',
+      current: 'Current', speciesAsk: 'Species: please inquire',
+      usesNote: 'Numbers in brackets refer to the studies listed under Research evidence.',
+      pending: 'This is a Degao proprietary blend. Its composition and effects are awaiting confirmation by Degao’s technical team, so the description below is general. Please call for details.'
     },
     advisor: {
       title: 'AI Product Advisor',
@@ -148,7 +156,7 @@ const dict = {
       orders: 'My Orders', cart: 'Purchase List', advisor: 'AI Product Advisor', about: 'About Degao', contact: 'Contact Us',
       language: 'Language / 语言', langName: 'English', version: 'Version'
     },
-    about: { story: 'Company Profile', milestones: 'Milestones', certs: 'Certifications', portfolio: 'Portfolio' },
+    about: { story: 'Company Profile', milestones: 'Milestones', certs: 'Certifications', portfolio: 'Six Product Areas', portfolioSub: 'Tap an area for all its products, or a product for details' },
     contact: {
       title: 'Contact Us', phone: 'Hotline', fax: 'Fax', email: 'Email', address: 'Address',
       form: 'Leave a Message', name: 'Your name', tel: 'Phone', msg: 'Message (products of interest, needs, etc.)',

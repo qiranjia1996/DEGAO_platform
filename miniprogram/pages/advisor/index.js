@@ -58,7 +58,10 @@ Page({
   },
 
   pickOption(e) {
-    this.setPath(this.data.path.concat(Number(e.currentTarget.dataset.index)))
+    const i = Number(e.currentTarget.dataset.index)
+    // 第一步选的是动物，记下来，产品详情页的应用场景默认显示这种动物
+    if (!this.data.path.length) getApp().globalData.lastSpecies = ['pig', 'poultry', 'ruminant', 'aqua'][i] || ''
+    this.setPath(this.data.path.concat(i))
   },
 
   treeBack() {

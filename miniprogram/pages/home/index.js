@@ -4,10 +4,10 @@ const company = require('../../data/company')
 const store = require('../../utils/store')
 
 const SOLUTIONS = [
-  { id: 'pig', en: 'SWINE', focus: { zh: '断奶腹泻 · 生长性能 · 替抗', en: 'Weaning scours · Growth · AGP-free' }, skus: ['SB30C', 'KDF95', 'CS30C'] },
-  { id: 'poultry', en: 'POULTRY', focus: { zh: '热应激 · 肠道健康 · 胸肉率', en: 'Heat stress · Gut health · Breast yield' }, skus: ['GABA98', 'GAA', 'ORP'] },
-  { id: 'ruminant', en: 'RUMINANT', focus: { zh: '犊牛肠道 · 免疫 · 生产性能', en: 'Calf gut · Immunity · Performance' }, skus: ['SB98P', 'YCW', 'CS30C'] },
-  { id: 'aqua', en: 'AQUA', focus: { zh: '诱食 · 脂肪利用 · 肝胆健康', en: 'Attraction · Fat use · Liver health' }, skus: ['BA30', 'BT70C', 'ALC'] }
+  { id: 'pig', en: 'SWINE', focus: { zh: '断奶腹泻 · 母猪哺乳 · 瘦肉率', en: 'Weaning scours · Sows · Lean yield' }, skus: ['SB50F', 'TA40C', 'GAA98'] },
+  { id: 'poultry', en: 'POULTRY', focus: { zh: '热应激 · 肠道健康 · 胸肉率', en: 'Heat stress · Gut health · Breast yield' }, skus: ['GABA98', 'TB65', 'GAA98'] },
+  { id: 'ruminant', en: 'RUMINANT', focus: { zh: '围产期 · 乳蛋白 · 育肥增重', en: 'Transition · Milk protein · Finishing gain' }, skus: ['RPM50', 'RPC25', 'GAA50M'] },
+  { id: 'aqua', en: 'AQUA', focus: { zh: '肠道保护 · 豆粕替代 · 肝胆健康', en: 'Gut protection · Soy diets · Liver health' }, skus: ['SB40M', 'TB65', 'BA10'] }
 ]
 
 Page({
@@ -40,11 +40,14 @@ Page({
       const list = products.filter(p => p.cat === c.id)
       return Object.assign(c, { count: list.length, names: [...new Set(list.map(p => p.name))].join(lang === 'en' ? ' · ' : '、') })
     })
+    // 主推产品按六大方向的顺序排列
+    const order = catalog.getCategories(lang).map(c => c.id)
+    const featured = products.filter(p => p.featured).sort((a, b) => order.indexOf(a.cat) - order.indexOf(b.cat))
     this.setData({
       lang,
       t,
       heroTitle: t.home.heroTitle.split('\n'),
-      featured: products.filter(p => p.featured),
+      featured,
       categories,
       solutions: SOLUTIONS.map(s => ({
         id: s.id,
@@ -85,6 +88,7 @@ Page({
 
   goSpecies(e) {
     getApp().globalData.productFilter = { species: e.currentTarget.dataset.id }
+    getApp().globalData.lastSpecies = e.currentTarget.dataset.id
     wx.switchTab({ url: '/pages/products/index' })
   },
 

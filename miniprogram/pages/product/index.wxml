@@ -1,5 +1,7 @@
 <view class="visual"><product-visual product="{{p}}" size="lg" /></view>
 
+<view class="pending" wx:if="{{p.pending}}">{{t.product.pending}}</view>
+
 <view class="head">
   <view class="head-cat">{{p.catName}} · {{p.id}}</view>
   <view class="head-title">{{p.title}}</view>
@@ -9,6 +11,7 @@
   </view>
   <view class="tags">
     <text class="tag" wx:for="{{p.species}}" wx:key="id">{{item.name}}</text>
+    <text class="tag" wx:if="{{!p.species.length}}">{{t.product.speciesAsk}}</text>
     <text class="tag tag-gold">FAMI-QS</text>
   </view>
 </view>
@@ -17,7 +20,7 @@
   <view class="block-title">{{t.product.grades}}</view>
   <view class="grades">
     <view wx:for="{{grades}}" wx:key="id" class="grade {{item.id === p.id ? 'grade-on' : ''}}" data-id="{{item.id}}" bindtap="pickGrade">
-      <text class="grade-name">{{item.pct || item.spec}} {{item.form}}</text>
+      <text class="grade-name">{{item.chip}}</text>
       <text class="grade-price">¥{{item.price}}/kg</text>
     </view>
   </view>
@@ -43,6 +46,44 @@
   </view>
 </view>
 
+<view class="block" wx:if="{{d.mechanism.length}}">
+  <view class="block-title">{{t.product.mechanism}}</view>
+  <view class="para" wx:for="{{d.mechanism}}" wx:key="*this">{{item}}</view>
+</view>
+
+<view class="block" wx:if="{{d.uses.length}}">
+  <view class="block-title">{{t.product.uses}}</view>
+  <view class="sp-tabs" wx:if="{{d.uses.length > 1}}">
+    <view wx:for="{{d.uses}}" wx:key="id" class="sp-tab {{item.id === useSp ? 'sp-tab-on' : ''}}" data-id="{{item.id}}" bindtap="pickUseSp">
+      <image class="sp-tab-icon" src="/images/species/{{item.id}}.png" mode="aspectFit" />
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <block wx:for="{{d.uses}}" wx:key="id" wx:for-item="g">
+    <view wx:if="{{g.id === useSp}}">
+      <view class="use" wx:for="{{g.items}}" wx:key="scene">
+        <view class="use-scene">{{item.scene}}</view>
+        <view class="use-text">{{item.text}}<text class="use-cite" wx:if="{{item.cite}}">{{item.cite}}</text></view>
+      </view>
+    </view>
+  </block>
+  <view class="note" wx:if="{{refs.length}}">{{t.product.usesNote}}</view>
+</view>
+
+<view class="block" wx:if="{{gradeGuide}}">
+  <view class="block-title">{{t.product.gradeGuide}}</view>
+  <view class="intro" wx:if="{{d.gradeNote}}">{{d.gradeNote}}</view>
+  <block wx:for="{{grades}}" wx:key="id">
+    <view class="gg" wx:if="{{item.fit}}" data-id="{{item.id}}" bindtap="pickGrade" hover-class="row-hover">
+      <view class="gg-head">
+        <text class="gg-name {{item.id === p.id ? 'gg-on' : ''}}">{{item.title}}</text>
+        <text class="gg-cur" wx:if="{{item.id === p.id}}">{{t.product.current}}</text>
+      </view>
+      <view class="gg-fit">{{item.fit}}</view>
+    </view>
+  </block>
+</view>
+
 <view class="block">
   <view class="block-title">{{t.product.specs}}</view>
   <view class="spec-table">
@@ -54,6 +95,28 @@
     <view class="spec-row"><text class="spec-k">{{t.product.dosage}}</text><text class="spec-v">{{p.dose}}</text></view>
   </view>
   <view class="note">{{t.product.note}}</view>
+</view>
+
+<view class="block" wx:if="{{d.howto.length}}">
+  <view class="block-title">{{t.product.howto}}</view>
+  <view class="benefits">
+    <view class="benefit" wx:for="{{d.howto}}" wx:key="*this">
+      <text class="benefit-no">0{{index + 1}}</text>
+      <text class="benefit-text">{{item}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="block" wx:if="{{d.faq.length}}">
+  <view class="block-title">{{t.product.faq}}</view>
+  <view class="faq" wx:for="{{d.faq}}" wx:key="q" data-i="{{index}}" bindtap="toggleFaq">
+    <view class="faq-q">
+      <text class="faq-mark">Q</text>
+      <text class="faq-qt">{{item.q}}</text>
+      <view class="chev {{faqOpen === index ? 'chev-up' : 'chev-down'}}"></view>
+    </view>
+    <view class="faq-a" wx:if="{{faqOpen === index}}">{{item.a}}</view>
+  </view>
 </view>
 
 <view class="block" wx:if="{{refs.length}}">

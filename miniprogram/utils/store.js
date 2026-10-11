@@ -11,8 +11,9 @@ function read(key, fallback) {
   }
 }
 
+// 只保留目录里仍然存在的产品（产品目录更新后，本机旧采购单里可能有已下架的编号）
 function getCart() {
-  return read(CART, [])
+  return read(CART, []).filter(l => catalog.getProduct(l.id, 'zh'))
 }
 
 function saveCart(cart) {
@@ -77,7 +78,12 @@ function placeOrder(info, lang) {
 function getOrders(lang) {
   return read(ORDERS, []).map(o =>
     Object.assign({}, o, {
-      items: o.items.map(i => Object.assign({}, catalog.getProduct(i.id, lang), { qty: i.qty }))
+      items: o.items
+        .map(i => {
+          const p = catalog.getProduct(i.id, lang)
+          return p ? Object.assign({}, p, { qty: i.qty }) : null
+        })
+        .filter(Boolean)
     })
   )
 }

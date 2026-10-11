@@ -22,9 +22,16 @@ Page({
       portfolio: catalog.getCategories(lang).map(c => ({
         id: c.id,
         name: c.name,
-        items: [...new Set(products.filter(p => p.cat === c.id).map(p => p.name))]
+        desc: c.desc,
+        count: products.filter(p => p.cat === c.id).length,
+        series: [...new Set(products.filter(p => p.cat === c.id).map(p => p.name))].join(lang === 'en' ? ' · ' : '、'),
+        rep: c.rep.map(id => catalog.getProduct(id, lang)).map(p => ({ id: p.id, title: p.title }))
       }))
     })
+  },
+
+  goProduct(e) {
+    wx.navigateTo({ url: '/pages/product/index?id=' + e.currentTarget.dataset.id })
   },
 
   goCat(e) {

@@ -11,16 +11,20 @@ const SPECIES_KW = {
 }
 
 const THEMES = [
-  { id: 'gut', zh: '肠道健康 / 腹泻', en: 'gut health / diarrhea', kw: ['腹泻', '拉稀', '稀便', '肠', '断奶', 'scour', 'diarrh', 'gut', 'intestin', 'wean', 'loose'], series: ['butyrate', 'tannic', 'tributyrin', 'kdf'] },
-  { id: 'agp', zh: '替抗减抗', en: 'antibiotic reduction', kw: ['替抗', '减抗', '无抗', '禁抗', '抗生素', 'antibiotic', 'agp'], series: ['butyrate', 'oregano', 'gox', 'allicin'] },
+  { id: 'gut', zh: '肠道健康 / 腹泻', en: 'gut health / diarrhea', kw: ['腹泻', '拉稀', '稀便', '肠', '断奶', 'scour', 'diarrh', 'gut', 'intestin', 'wean', 'loose'], series: ['butyrate', 'tannic', 'tributyrin', 'allicin'] },
+  { id: 'agp', zh: '替抗减抗', en: 'antibiotic reduction', kw: ['替抗', '减抗', '无抗', '禁抗', '抗生素', 'antibiotic', 'agp'], series: ['butyrate', 'allicin', 'tannic', 'ycw'] },
   { id: 'stress', zh: '热应激 / 应激', en: 'heat / stress', kw: ['热应激', '应激', '高温', '夏', '天热', '运输', 'heat', 'stress', 'summer', 'hot', 'transport'], series: ['gaba', 'betaine'] },
-  { id: 'mold', zh: '霉菌毒素', en: 'mycotoxins', kw: ['霉', '毒素', '黄曲', '呕吐毒素', '赤霉', '假发情', 'mold', 'mould', 'mycotox', 'aflatox', 'zearal', ' don', 'false-estrus'], series: ['moldx', 'ycw'] },
-  { id: 'growth', zh: '生长性能', en: 'growth performance', kw: ['增重', '瘦肉', '生长', '育肥', '出栏', '料肉比', '饲料转化', '胸肉', '长得慢', 'growth', 'gain', 'lean', 'finish', 'fcr', 'breast'], series: ['cysteamine', 'gaa', 'kdf', 'betaine'] },
+  { id: 'mold', zh: '霉菌毒素', en: 'mycotoxins', kw: ['霉', '毒素', '黄曲', '呕吐毒素', '赤霉', '假发情', 'mold', 'mould', 'mycotox', 'aflatox', 'zearal', ' don', 'false-estrus'], series: ['ycw'] },
+  { id: 'growth', zh: '生长性能', en: 'growth performance', kw: ['增重', '瘦肉', '生长', '育肥', '出栏', '料肉比', '饲料转化', '胸肉', '长得慢', 'growth', 'gain', 'lean', 'finish', 'fcr', 'breast'], series: ['gaa', 'cysteamine', 'betaine'] },
+  { id: 'dairy', zh: '奶牛产奶 / 围产期', en: 'dairy milk / transition', kw: ['奶牛', '产奶', '乳蛋白', '围产', '泌乳', '脂肪肝', '酮病', 'dairy', 'milk', 'transition', 'lactat'], series: ['met', 'lys', 'choline'] },
   { id: 'immune', zh: '免疫力', en: 'immunity', kw: ['免疫', '抵抗力', '疫苗', '体弱', '成活', '死淘', 'immun', 'vaccin', 'resist', 'surviv', 'mortal'], series: ['ycw', 'allicin'] },
   { id: 'fat', zh: '脂肪消化 / 肝脏', en: 'fat digestion / liver', kw: ['脂肪', '肝', '油脂', '能量', 'fat', 'liver', 'lipid', 'energy'], series: ['bile', 'betaine'] },
-  { id: 'palat', zh: '采食与诱食', en: 'intake & palatability', kw: ['诱食', '适口', '采食', '不爱吃', 'palat', 'appetite', 'intake', 'attract'], series: ['betaine', 'allicin', 'tributyrin'] },
-  { id: 'laying', zh: '产蛋性能', en: 'laying performance', kw: ['产蛋', '蛋鸡', '蛋壳', 'laying', 'layer', 'egg'], series: ['gaba', 'butyrate'] }
+  { id: 'palat', zh: '采食与诱食', en: 'intake & palatability', kw: ['诱食', '适口', '采食', '不爱吃', 'palat', 'appetite', 'intake', 'attract'], series: ['betaine', 'tributyrin', 'allicin'] },
+  { id: 'laying', zh: '产蛋性能', en: 'laying performance', kw: ['产蛋', '蛋鸡', '蛋壳', 'laying', 'layer', 'egg'], series: ['gaba', 'butyrate', 'bile'] }
 ]
+
+// 成分待确认的产品不参与自动推荐
+const ACTIVE = Object.keys(catalog.SERIES).filter(s => !catalog.SERIES[s].pending)
 
 function pickSku(series) {
   const skus = catalog.SKUS.filter(s => s.series === series)
@@ -34,11 +38,12 @@ function localRecommend(query, lang) {
   const themes = THEMES.filter(t => t.kw.some(w => q.includes(w)))
   const scores = {}
   themes.forEach(t => t.series.forEach((s, i) => { scores[s] = (scores[s] || 0) + (4 - i) }))
-  Object.keys(catalog.SERIES).forEach(s => {
+  ACTIVE.forEach(s => {
     const hits = catalog.SERIES[s].keywords.filter(w => q.includes(w.toLowerCase())).length
     if (hits) scores[s] = (scores[s] || 0) + hits
   })
   let ranked = Object.keys(scores)
+    .filter(s => ACTIVE.includes(s))
     .filter(s => !species.length || species.some(sp => catalog.SERIES[s].species.includes(sp)))
     .sort((a, b) => scores[b] - scores[a])
     .slice(0, 3)
@@ -71,7 +76,7 @@ function localRecommend(query, lang) {
 }
 
 function catalogText(lang) {
-  return catalog.getProducts(lang).map(p =>
+  return catalog.getProducts(lang).filter(p => !p.pending).map(p =>
     `${p.id} | ${p.title} | ${p.catName} | ${p.speciesIds.join('/')} | ${p.benefits.join('; ')} | ${p.dose}`
   ).join('\n')
 }

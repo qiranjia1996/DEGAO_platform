@@ -87,13 +87,17 @@
 <!-- 产品系列：目录式 -->
 <view class="section">
   <view class="section-head">
-    <view class="section-title">{{t.home.categories}}</view>
+    <view>
+      <view class="section-title">{{t.home.categories}}</view>
+      <view class="section-sub">{{t.home.categoriesSub}}</view>
+    </view>
   </view>
   <view class="toc">
     <view class="toc-row" wx:for="{{categories}}" wx:key="id" data-id="{{item.id}}" bindtap="goCategory" hover-class="row-hover">
       <text class="toc-no">0{{index + 1}}</text>
       <view class="toc-main">
         <view class="toc-name">{{item.name}}</view>
+        <view class="toc-desc">{{item.desc}}</view>
         <view class="toc-names">{{item.names}}</view>
       </view>
       <text class="toc-count">{{item.count}}</text>

@@ -5,7 +5,7 @@ const references = require('../../data/references')
 const store = require('../../utils/store')
 
 Page({
-  data: { qty: 1 },
+  data: { qty: 1, faqOpen: -1 },
 
   onLoad(q) {
     this.id = q.id
@@ -21,13 +21,23 @@ Page({
     const p = catalog.getProduct(this.id, lang)
     if (!p) return
     wx.setNavigationBarTitle({ title: p.title })
+    const refs = references.getSeriesRefs(p.series, lang)
+    const d = catalog.getDetail(p.series, refs.map(r => r.id), lang)
+    // 应用场景默认显示客户最近关注的动物（在产品中心或问答选品里选过的），否则显示第一个
+    const last = getApp().globalData.lastSpecies
+    const useSp = d.uses.some(g => g.id === last) ? last : d.uses.length ? d.uses[0].id : ''
+    const grades = catalog.getSiblings(this.id, lang)
     this.setData({
       lang,
       t,
       p,
-      grades: catalog.getSiblings(this.id, lang),
+      d,
+      useSp,
+      faqOpen: -1,
+      grades,
+      gradeGuide: grades.length > 1 && grades.some(g => g.fit),
       related: catalog.getProducts(lang).filter(x => x.cat === p.cat && x.series !== p.series).slice(0, 4),
-      refs: references.getSeriesRefs(p.series, lang)
+      refs
     })
   },
 
@@ -35,6 +45,17 @@ Page({
     this.id = e.currentTarget.dataset.id
     this.setData({ qty: 1 })
     this.render()
+  },
+
+  pickUseSp(e) {
+    const id = e.currentTarget.dataset.id
+    getApp().globalData.lastSpecies = id
+    this.setData({ useSp: id })
+  },
+
+  toggleFaq(e) {
+    const i = e.currentTarget.dataset.i
+    this.setData({ faqOpen: this.data.faqOpen === i ? -1 : i })
   },
 
   minus() {

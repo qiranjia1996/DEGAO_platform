@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="bag-body">
-    <view class="bag-name">{{product.name}}</view>
+    <view class="bag-name">{{product.bagName || product.name}}</view>
     <view class="bag-big {{product.pct ? '' : 'bag-big-mark'}}">{{product.pct || product.mark}}</view>
     <view class="bag-formula">{{product.formula}}</view>
     <view wx:if="{{size === 'lg'}}" class="bag-species">

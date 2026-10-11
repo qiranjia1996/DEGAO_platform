@@ -49,3 +49,34 @@
 .ref-main { flex: 1; min-width: 0; }
 .ref-finding { font-size: 25rpx; line-height: 1.65; color: var(--c-ink); }
 .ref-meta { font-size: 21rpx; color: var(--c-muted); margin-top: 6rpx; text-decoration: underline; text-decoration-color: #D5D9D6; }
+
+.pending { background: #FFF6E5; color: #8A5A00; font-size: 24rpx; line-height: 1.6; padding: 20rpx 32rpx; border-bottom: 1rpx solid #F0DDB5; }
+.para { font-size: 27rpx; color: #3A403C; line-height: 1.9; margin-bottom: 18rpx; }
+.para:last-child { margin-bottom: 0; }
+
+.sp-tabs { display: flex; flex-wrap: wrap; margin: 0 -12rpx 12rpx 0; }
+.sp-tab { display: flex; align-items: center; border: 1rpx solid var(--c-line); border-radius: 40rpx; padding: 10rpx 24rpx 10rpx 14rpx; margin: 0 12rpx 12rpx 0; font-size: 25rpx; color: var(--c-sub); }
+.sp-tab-icon { width: 36rpx; height: 36rpx; margin-right: 8rpx; }
+.sp-tab-on { border-color: var(--c-green); background: var(--c-green-soft); color: var(--c-green); font-weight: 500; }
+.use { padding: 22rpx 0; border-bottom: 1rpx solid var(--c-line-2); }
+.use:first-child { border-top: 1rpx solid var(--c-line-2); }
+.use-scene { font-size: 27rpx; font-weight: 600; color: var(--c-ink); margin-bottom: 8rpx; }
+.use-text { font-size: 25rpx; color: #3A403C; line-height: 1.75; }
+.use-cite { color: var(--c-red); font-size: 21rpx; margin-left: 4rpx; }
+
+.gg { padding: 22rpx 0; border-bottom: 1rpx solid var(--c-line-2); }
+.intro + .gg { margin-top: 18rpx; border-top: 1rpx solid var(--c-line-2); }
+.gg-head { display: flex; align-items: center; }
+.gg-name { font-size: 26rpx; font-weight: 600; color: var(--c-ink); }
+.gg-on { color: var(--c-green); }
+.gg-cur { font-size: 20rpx; color: var(--c-green); border: 1rpx solid var(--c-green); border-radius: 4rpx; padding: 0 8rpx; margin-left: 12rpx; }
+.gg-fit { font-size: 24rpx; color: var(--c-sub); line-height: 1.7; margin-top: 6rpx; }
+
+.faq { border-bottom: 1rpx solid var(--c-line-2); padding: 22rpx 0; }
+.faq:first-of-type { border-top: 1rpx solid var(--c-line-2); }
+.faq-q { display: flex; align-items: center; }
+.faq-mark { font-size: 22rpx; color: var(--c-red); width: 40rpx; flex-shrink: 0; font-weight: 600; }
+.faq-qt { flex: 1; font-size: 26rpx; color: var(--c-ink); font-weight: 500; line-height: 1.5; }
+.chev-down { transform: rotate(135deg); }
+.chev-up { transform: rotate(-45deg); margin-top: 8rpx; }
+.faq-a { font-size: 25rpx; color: #3A403C; line-height: 1.8; margin: 14rpx 0 0 40rpx; }

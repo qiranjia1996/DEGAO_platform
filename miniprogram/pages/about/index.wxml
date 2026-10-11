@@ -19,6 +19,26 @@
 </view>
 
 <view class="block">
+  <view class="block-title">{{t.about.portfolio}}</view>
+  <view class="pf-sub">{{t.about.portfolioSub}}</view>
+  <view class="pf" wx:for="{{portfolio}}" wx:key="id">
+    <text class="pf-no">0{{index + 1}}</text>
+    <view class="pf-main">
+      <view class="pf-head" data-id="{{item.id}}" bindtap="goCat" hover-class="row-hover">
+        <text class="pf-name">{{item.name}}</text>
+        <text class="pf-count">{{item.count}}</text>
+        <view class="chev"></view>
+      </view>
+      <view class="pf-desc">{{item.desc}}</view>
+      <view class="pf-series">{{item.series}}</view>
+      <view class="pf-items">
+        <text class="tag pf-tag" wx:for="{{item.rep}}" wx:for-item="r" wx:key="id" data-id="{{r.id}}" bindtap="goProduct">{{r.title}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="block">
   <view class="block-title">{{t.about.milestones}}</view>
   <view class="timeline">
     <view class="tl" wx:for="{{milestones}}" wx:key="year">
@@ -36,19 +56,6 @@
       <text class="cert-code">{{item.code}}</text>
       <text class="cert-title">{{item.title}}</text>
       <text class="cert-desc">{{item.desc}}</text>
-    </view>
-  </view>
-</view>
-
-<view class="block">
-  <view class="block-title">{{t.about.portfolio}}</view>
-  <view class="pf" wx:for="{{portfolio}}" wx:key="id" data-id="{{item.id}}" bindtap="goCat" hover-class="row-hover">
-    <text class="pf-no">0{{index + 1}}</text>
-    <view class="pf-main">
-      <view class="pf-name">{{item.name}}</view>
-      <view class="pf-items">
-        <text class="tag" wx:for="{{item.items}}" wx:for-item="n" wx:key="*this">{{n}}</text>
-      </view>
     </view>
   </view>
 </view>

@@ -110,7 +110,8 @@ function validate() {
     r.items.forEach(it => {
       const sku = catalog.SKUS.find(s => s.id === it.sku)
       if (!sku) return errors.push(`${id} 引用了不存在的产品 ${it.sku}`)
-      if (!catalog.SERIES[sku.series].species.includes(r.species)) errors.push(`${id}：${it.sku} 不适用于 ${r.species}`)
+      if (catalog.SERIES[sku.series].pending) errors.push(`${id}：${it.sku} 成分待确认，不能进入推荐`)
+      if (!(sku.species || catalog.SERIES[sku.series].species).includes(r.species)) errors.push(`${id}：${it.sku} 不适用于 ${r.species}`)
       if (!it.role.zh || !it.role.en) errors.push(`${id}：${it.sku} 缺少作用说明`)
       const seriesRefs = references.REFS.filter(x => references.covers(x, sku.series)).map(x => x.id)
       if (!seriesRefs.some(ref => cited.zh.has(ref))) errors.push(`${id}：${it.sku} 没有引用任何文献`)

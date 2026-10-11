@@ -11,6 +11,7 @@ Page({
     const f = getApp().globalData.productFilter
     if (f) {
       getApp().globalData.productFilter = null
+      if (f.species) getApp().globalData.lastSpecies = f.species
       this.setData({ cat: f.cat || 'all', species: f.species || 'all', keyword: '' })
     }
     this.render()
@@ -53,7 +54,9 @@ Page({
   },
 
   pickSpecies(e) {
-    this.setData({ species: e.currentTarget.dataset.id })
+    const id = e.currentTarget.dataset.id
+    if (id !== 'all') getApp().globalData.lastSpecies = id
+    this.setData({ species: id })
     this.render()
   }
 })
